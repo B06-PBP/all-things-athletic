@@ -1,6 +1,6 @@
 {% load static %}
 
-<header class="bg-#65aac2">
+<header class="bg-#adba5e">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-24 items-center justify-between"> <!-- Sesuaikan tinggi navbar -->
       <div class="flex-1 md:flex md:items-center md:gap-12">
@@ -29,11 +29,12 @@
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex items-center gap-6 text-sm">
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#" style="color: #e7e5d7;"> Home </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_main' %}" style="color: #344f1f;"> Home </a>
             </li>
         
+            <!-- Dropdown for Category -->
             <li class="relative group">
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#" style="color: #e7e5d7;"> Category </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="#" style="color: #344f1f;"> Category </a>
               <ul class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-48">
                 <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Yoga</a></li>
                 <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cycling</a></li>
@@ -47,8 +48,9 @@
                 <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Golf</a></li>
               </ul>
             </li>
+
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="#" style="color: #e7e5d7;"> Article </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="#" style="color: #344f1f;"> Articles </a>
             </li>
           </ul>
         </nav>
@@ -61,9 +63,9 @@
           >
             <span class="sr-only">Toggle dashboard menu</span>
             <img
-              src="https://i.pinimg.com/564x/38/6c/52/386c5283f14bdca0fa14e28dd18fb574.jpg"
-              alt=""
-              class="size-10 object-cover"
+                src="{% static 'image/user.jpg' %}"
+                alt=""
+                class="size-10 object-cover"
             />
           </button>
         
@@ -79,14 +81,6 @@
                 role="menuitem"
               >
                 My profile
-              </a>
-        
-              <a
-                href="#"
-                class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                role="menuitem"
-              >
-                Log Out
               </a>
             </div>
         
