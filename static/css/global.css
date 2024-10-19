@@ -1,0 +1,27 @@
+header {
+    height: 103px; /* Menambah tinggi navbar */
+    background-color: #65aac2; /* Warna latar belakang tetap */
+}
+
+header .logo {
+    height: 100px; /* Atur ukuran logo agar lebih proporsional */
+    width: auto;
+    margin-top: 10px; /* Memberikan jarak dari atas agar tidak terpotong */
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #e7e5d7; /* Ubah background menjadi warna yang diinginkan */
+  }
+
+  .image-container {
+    margin-top: 20px; /* Jarak antara navbar dan gambar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container img {
+    max-width: 100%; /* Membuat gambar responsif */
+    height: auto;
+  }

@@ -1,8 +1,15 @@
-<h1>Mental Health Tracker</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<h5>NPM: </h5>
-<p>{{ npm }}<p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+{% block meta %}
+<title>All Things Athletic</title>
+{% endblock meta %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<!-- Gambar home.jpg di bawah navbar -->
+<div class="image-container">
+    <img src="{% static 'image/home.jpg' %}" alt="Home Image" class="w-full h-auto">
+  </div>
+
+{% endblock content %}
