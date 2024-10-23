@@ -1,8 +1,35 @@
-<h1>All Things Athletic</h1> 
+{% extends 'base.html' %}
 
-<h5>NPM: </h5>
-<p>{{ npm }}<p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+{% block content %}
+<h1>Mental Health Tracker</h1>
+
+<h5>NPM: {{ npm }}</h5>
+<h5>Name: {{ name }}</h5>
+<h5>Class: {{ class }}</h5>
+
+{% if not reviews %}
+<p>Belum ada review pada mental health tracker.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Rating</th>
+    <th>Review</th>
+    <th>Date</th>
+  </tr>
+
+  {% for review in reviews %}
+  <tr>
+    <td>{{ review.rating }}</td>
+    <td>{{ review.review }}</td>
+    <td>{{ review.date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_review' %}">
+  <button>Add New Review</button>
+</a>
+{% endblock content %}

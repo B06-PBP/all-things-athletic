@@ -1,39 +1,43 @@
-# main/views.py
-from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ReviewForm
-from .models import Review
+from django.shortcuts import render, redirect  # Tambahkan import redirect
+from main.forms import ReviewForm  # Ganti MoodEntryForm dengan ReviewForm
+from main.models import Review  # Ganti MoodEntry dengan Review
+from django.http import HttpResponse
+from django.core import serializers
 
 def show_main(request):
-    return render(request, 'main/main.html')
+    reviews = Review.objects.all()  # Mengambil seluruh objek Review yang tersimpan dalam database
 
-def list_reviews(request):
-    reviews = Review.objects.all()
-    return render(request, 'main/review_list.html', {'reviews': reviews})
+    context = {
+        'name': 'Shafa Amira Azka',
+        'class': 'PBP B',
+        'npm': '2306214025',
+        'reviews': reviews  # Mengirimkan data review ke template
+    }
+
+    return render(request, "main.html", context)
 
 def create_review(request):
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('main:list_reviews')
-    else:
-        form = ReviewForm()
-    return render(request, 'main/review_form.html', {'form': form})
+    form = ReviewForm(request.POST or None)
 
-def edit_review(request, id):
-    review = get_object_or_404(Review, id=id)
-    if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review)
-        if form.is_valid():
-            form.save()
-            return redirect('main:list_reviews')
-    else:
-        form = ReviewForm(instance=review)
-    return render(request, 'main/review_form.html', {'form': form})
+    if form.is_valid() and request.method == "POST":
+        form.save()  # Menyimpan data review baru
+        return redirect('main:show_reviews')  # Ganti dengan URL yang sesuai untuk halaman daftar review
 
-def delete_review(request, id):
-    review = get_object_or_404(Review, id=id)
-    if request.method == 'POST':
-        review.delete()
-        return redirect('main:list_reviews')
-    return render(request, 'main/review_confirm_delete.html', {'review': review})
+    context = {'form': form}
+    return render(request, "create_review.html", context)  # Sesuaikan dengan template untuk membuat review
+
+def show_xml(request):
+    data = Review.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Review.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = Review.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Review.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
