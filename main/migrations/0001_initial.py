@@ -21,4 +21,8 @@ class Migration(migrations.Migration):
                 ('mood_intensity', models.IntegerField()),
             ],
         ),
+<<<<<<< HEAD
     ]
+=======
+    ]
+>>>>>>> origin/shafa

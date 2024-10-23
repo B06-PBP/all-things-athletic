@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect  # Tambahkan import redirect
 from main.forms import ReviewForm  # Ganti MoodEntryForm dengan ReviewForm
 from main.models import Review  # Ganti MoodEntry dengan Review
@@ -41,3 +42,15 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Review.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+=======
+from django.shortcuts import render
+
+def show_main(request):
+    context = {
+        'npm' : '2306214025',
+        'name': 'Shafa Amira Azka',
+        'class': 'PBP B'
+    }
+
+    return render(request, "main.html", context)
+>>>>>>> origin/shafa
