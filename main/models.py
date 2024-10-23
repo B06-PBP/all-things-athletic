@@ -1,11 +1,9 @@
 from django.db import models
 
-class MoodEntry(models.Model):
-    mood = models.CharField(max_length=255)
-    time = models.DateField(auto_now_add=True)
-    feelings = models.TextField()
-    mood_intensity = models.IntegerField()
+class Article(models.Model):
+    title = models.CharField(max_length=200)
+    image_url = models.URLField(max_length=500)
+    full_description = models.TextField()
 
-    @property
-    def is_mood_strong(self):
-        return self.mood_intensity > 5
+    def __str__(self):
+        return self.title
