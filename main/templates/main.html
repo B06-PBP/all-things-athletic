@@ -1,8 +1,24 @@
-<h1>All Things Athletic</h1> 
+<h2>Reviews</h2>
+<div>
+    {% for review in reviews %}
+        <div>
+            <h4>{{ review.name }} (Rating: {{ review.rating }})</h4>
+            <p>{{ review.comment }}</p>
+            <p><em>{{ review.created_at }}</em></p>
+            <a href="{% url 'main:edit_review' review.id %}">Edit</a>
+            <form action="{% url 'main:delete_review' review.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    {% empty %}
+        <p>No reviews yet.</p>
+    {% endfor %}
+</div>
 
-<h5>NPM: </h5>
-<p>{{ npm }}<p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
+<h3>Submit a Review</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
