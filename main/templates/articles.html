@@ -15,48 +15,107 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6 mt-8" id="articles-container">
         <!-- Article 1 -->
-        <div class="bg-#e7e5d7 shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article1.jpg' %}" alt="Article 1" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024 resmi dibuka pada Kamis (10/10/2024) di Istora Senayan, Jakarta.</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article1' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="1" style="color: #65aac2;">Read more</a>
         </div>
 
         <!-- Article 2 -->
-        <div class="bg-#e7e5d7 shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article2.jpg' %}" alt="Article 2" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri Pekan Olahraga Nasional (PON) XXI Aceh-Sumatera Utara 2024 berkat permainan yang solid saat menghadapi Jawa Timur.</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article2' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="2" style="color: #65aac2;">Read more</a>
         </div>
 
         <!-- Article 3 -->
-        <div class="bg-#adba5e shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article3.jpg' %}" alt="Article 3" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">Salah satu lapangan golf di Jakarta dalam daftar ini dianggap sebagai lapangan kelas dunia karena menjadi yang pertama di Asia yang menggunakan rumput kualitas terbaik.</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article3' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="3" style="color: #65aac2;">Read more</a>
         </div>
 
         <!-- Article 4 -->
-        <div class="bg-#adba5e shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article4.jpg' %}" alt="Article 4" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam Festival Yoga yang digelar di Jakarta oleh Isha Foundation dan bertepatan dengan momen Hari Yoga Internasional 2024.</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article4' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="4" style="color: #65aac2;">Read more</a>
         </div>
 
         <!-- Article 5 -->
-        <div class="bg-#adba5e shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article5.jpg' %}" alt="Article 5" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada kontingen Indonesia di Olimpiade 2024 dengan cara unik dan spesial. Royke bersepeda dari Jakarta ke Paris sekitar setahun sehingga tiba tepat saat Olimpiade 2024 berlangsung.</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article5' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="5" style="color: #65aac2;">Read more</a>
         </div>
 
         <!-- Article 6 -->
-        <div class="bg-#adba5e shadow-lg rounded-lg p-6">
+        <div class="bg-[#e7e5d7] shadow-lg rounded-lg p-6">
             <img src="{% static 'image/article6.jpg' %}" alt="Article 6" class="max-w-full h-auto rounded-md">
             <p class="text-gray-600 mt-2 text-justify">Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs Bahrain akan tetap digelar di Jakarta. Benarkah demikian?</p>
-            <a class="mt-4 block read-more-btn" href="{% url 'main:show_article6' %}" style="color: #65aac2;">Read more</a>
+            <a class="mt-4 block read-more-btn" href="#" data-article-id="6" style="color: #65aac2;">Read more</a>
+        </div>
+    </div>
+
+    <!-- Overlay untuk menutupi halaman-->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden"></div>
+
+    <!-- Konten yang dimunculkan dengan AJAX akan ditampilkan di sini -->
+    <div id="ajax-content" class="fixed hidden inset-0 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-md p-6 relative">
+            <span id="close-btn" class="absolute top-2 right-2 cursor-pointer">&times;</span>
+            <div id="ajax-inner-content"></div>
         </div>
     </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.read-more-btn');
+    const overlay = document.getElementById('overlay');
+    const ajaxContent = document.getElementById('ajax-content');
+    const ajaxInnerContent = document.getElementById('ajax-inner-content');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah pengalihan halaman
+            const articleId = this.getAttribute('data-article-id');
+
+            // Melakukan request AJAX ke URL yang sesuai dengan ID artikel
+            fetch(`/articles/${articleId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    // Tempatkan kode di sini untuk mengatur konten AJAX
+                    ajaxInnerContent.innerHTML = `
+                        <div class="flex">
+                            <img src="${data.image_url}" alt="${data.title}" class="max-w-[250px] h-auto rounded-md mr-4">
+                            <div class="flex-1">
+                                <h2 class="text-xl font-bold">${data.title}</h2>
+                                <br> <!-- Menambahkan space setelah judul -->
+                                <p>${data.short_description}</p>
+                                <br> <!-- Menambahkan space setelah deskripsi singkat -->
+                                <a href="/articles${data.id}/" class="mt-4 inline-block text-center bg-[#65aac2] text-white py-2 px-4 rounded-full hover:bg-[#4a9cba]">Show More</a>
+                            </div>
+                        </div>
+                    `;
+                    // Tampilkan pop-up dan overlay
+                    ajaxContent.style.display = 'flex';
+                    overlay.style.display = 'block';
+                })
+                .catch(error => console.error('Error fetching article details:', error));
+        });
+    });
+
+    // Menangani klik pada tombol tutup
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'close-btn' || e.target === overlay) {
+            ajaxContent.style.display = 'none';  // Sembunyikan pop-up
+            overlay.style.display = 'none';  // Sembunyikan overlay
+        }
+    });
+});
+
+</script>
 
 {% endblock content %}

@@ -18,18 +18,19 @@
       <img src="{% static 'image/basketball.jpg' %}" alt="Photo 1" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
-          style="background-color: #174789; color: white;" 
+          onclick="window.location.href='/basketball/'" 
+          style="background-color: #174789; color: white;"
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
           BASKETBALL >>
       </button>
+
   </div>
   <div class="w-full">
       <img src="{% static 'image/yoga.jpg' %}" alt="Photo 2" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/yoga/'" 
           style="background-color: #344f1f; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -40,7 +41,7 @@
       <img src="{% static 'image/tennis.jpg' %}" alt="Photo 3" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/tennis/'" 
           style="background-color: #174789; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -51,7 +52,7 @@
       <img src="{% static 'image/golf.jpg' %}" alt="Photo 4" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/golf/'" 
           style="background-color: #344f1f; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -62,7 +63,7 @@
       <img src="{% static 'image/swimming.jpg' %}" alt="Photo 5" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/swimming/'" 
           style="background-color: #174789; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -73,7 +74,7 @@
       <img src="{% static 'image/cycling.jpg' %}" alt="Photo 6" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/cycling/'"
           style="background-color: #344f1f; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -84,7 +85,7 @@
       <img src="{% static 'image/running.jpg' %}" alt="Photo 7" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/running/'" 
           style="background-color: #174789; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -95,7 +96,7 @@
       <img src="{% static 'image/boxing.jpg' %}" alt="Photo 8" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/boxing/'" 
           style="background-color: #344f1f; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -106,7 +107,7 @@
       <img src="{% static 'image/badminton.jpg' %}" alt="Photo 9" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/badminton/'" 
           style="background-color: #174789; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
@@ -117,13 +118,17 @@
       <img src="{% static 'image/football.jpg' %}" alt="Photo 10" class="w-full h-auto">
       <!-- Tombol untuk refresh page -->
       <button 
-          onclick="location.reload()" 
+          onclick="window.location.href='/football/'" 
           style="background-color: #344f1f; color: white;" 
           class="w-full mt-2 hover:bg-blue-700 font-bold py-3 px-4 rounded"
       >
           FOOTBALL >>
       </button>
   </div>
+
 </div>
 
+<div class="mb-12"></div>
+
+{% include 'footer.html' %}
 {% endblock content %}

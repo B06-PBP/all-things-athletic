@@ -10,31 +10,40 @@ header .logo {
     margin-bottom: 10px;
 }
 
+#profileDropdown {
+  z-index: 10; /* Agar dropdown berada di atas elemen lainnya */
+  display: none; /* Mulai dengan tersembunyi */
+}
+
+.show {
+  display: block; /* Ketika toggle, dropdown ditampilkan */
+}
+
 body {
-    background-color: #e7e5d7; /* Ubah background menjadi warna yang diinginkan */
-  }
+  background-color: #e7e5d7; /* Ubah background menjadi warna yang diinginkan */
+}
 
-  .image-container {
-    margin-top: 20px; /* Jarak antara navbar dan gambar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.image-container {
+  margin-top: 20px; /* Jarak antara navbar dan gambar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .image-container img {
-    max-width: 100%; /* Membuat gambar responsif */
-    height: auto;
-  }
+.image-container img {
+  max-width: 100%; /* Membuat gambar responsif */
+  height: auto;
+}
 
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9998;  
-    display: none;
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;  
+  display: none;
 }
 
 #ajax-content {
@@ -42,15 +51,13 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
-  background-color: #e7e5d7;
+  width: 95%;  /* Perbesar lebar kotak */
+  max-width: 1400px;  /* Ubah max-width menjadi 1400px */
   z-index: 9999;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  padding: 40px;  /* Tambahkan padding untuk ruang lebih dalam konten */
   border-radius: 10px;
   display: none;
-  min-height: 200px;
+  min-height: 400px; /* Sesuaikan tinggi minimal jika perlu */
 }
 
 /* Tombol untuk menutup pop-up */
@@ -61,7 +68,7 @@ body {
   color: #65aac2;
   font-weight: bold;
   font-size: 20px;
-}
+} 
 
 .text-button {
   background: none;
@@ -74,4 +81,19 @@ body {
 
 .text-button:hover {
   color: #0056b3; /* Warna teks saat di-hover */
+}
+
+/* Menyesuaikan gaya untuk konten AJAX */
+#ajax-inner-content img {
+  max-width: 300px; /* Mengatur lebar maksimum gambar */
+  height: auto; /* Memastikan gambar proporsional */
+  margin-right: 1rem; /* Spasi antara gambar dan deskripsi */
+}
+
+#ajax-inner-content {
+  display: flex; /* Menggunakan flexbox untuk menata konten */
+}
+
+#ajax-inner-content > div {
+  flex: 1; /* Membiarkan deskripsi mengambil ruang yang tersisa */
 }
