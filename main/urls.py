@@ -4,5 +4,6 @@ from main.views import show_product
 app_name = 'main'
 
 urlpatterns = [
-    path('products/', show_product, name='show_product'),
+    path('', show_product, name='home'),
+    path('product/', show_product, name='show_product'),
 ]
