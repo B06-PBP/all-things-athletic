@@ -154,54 +154,95 @@
 </head>
 <body>
 
-    <div id="product-container">
-        {% for product in data_alat_olahraga %}
-        <div class="card">
-            <div class="card-top">
-                <img src="{{ product.gambar }}" alt="{{ product.alat_olahraga }}">
-                <h2>{{ product.alat_olahraga }}</h2>
-            </div>
-            <div class="card-bottom">
-                <div class="info">
-                    <span class="price">{{ product.harga }}</span>
-                    <span class="rating">{{ product.rating }} ★</span>
-                </div>
-                <div class="details">
-                    <div class="description">
-                        <div class="label">Description:</div>
-                        {{ product.deskripsi }}
-                    </div>
-                    <div class="store">
-                        <div class="label">Store:</div>
-                        <ul>
-                            {% for store in product.toko_list %}
-                                <li>{{ store }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="buttons">
-                    <button class="review-btn" onclick="handleReview('{{ product.alat_olahraga }}')">Review</button>
-                    <button class="rating-btn" onclick="handleRating('{{ product.alat_olahraga }}', Number('{{ product.rating }}'))">Rating</button>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+    <div id="product-container"></div>
 
     <script>
-        function handleReview(productName) {
-            alert(`Opening review for ${productName}`);
-            // You can add more code here to navigate to a review page or open a review modal
-        }
+        // Fetch the JSON data dynamically
+        fetch('/fixture/Daftar_100_Alat_Olahraga_di_Jak.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayProducts(data);
+            })
+            .catch(error => console.error('Error loading the dataset:', error));
 
-        function handleRating(productName, rating) {
-            alert(`${productName} has a rating of ${rating} stars`);
-            // You can add more code here to submit a rating or show rating details
+        function displayProducts(products) {
+            const container = document.getElementById('product-container');
+            container.innerHTML = ''; 
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-top">
+                        <img src="${product['Referensi Gambar']}" alt="${product['Alat Olahraga']}">
+                        <h2>${product['Alat Olahraga']}</h2>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="info">
+                            <span class="price">${product['Rata-rata harga']}</span>
+                            <span class="rating">${product['Rata-rata Rating']} ★</span>
+                        </div>
+                        <div class="details">
+                            <div class="description">
+                                <div class="label">Description:</div>
+                                ${product['Description']}
+                            </div>
+                            <div class="store">
+                                <div class="label">Store:</div>
+                                <ul>${product['Toko yang menjual'].split(', ').map(store => `<li>${store}</li>`).join('')}</ul>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="review-btn">Review</button>
+                            <button class="rating-btn">Rating</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // Tambahkan event listener setelah produk ditampilkan
+            document.querySelectorAll('.review-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert(`Review for ${this.dataset.product}`);
+                });
+            });
+
+            document.querySelectorAll('.rating-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert(`Rating is ${this.dataset.rating} stars`);
+                });
+            });
         }
     </script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
