@@ -10,7 +10,7 @@
 from django.shortcuts import render
 from .models import AlatOlahraga
 
-def show_main(request):
+def show_product(request):
     # Mengambil data dari database
     data_alat_olahraga = AlatOlahraga.objects.all()
 
@@ -22,6 +22,6 @@ def show_main(request):
         'data_alat_olahraga': data_alat_olahraga
     }
     
-    return render(request, 'main.html', context)
+    return render(request, 'product.html', context)
 
 
