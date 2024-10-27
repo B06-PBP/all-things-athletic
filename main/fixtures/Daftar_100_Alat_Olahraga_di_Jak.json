@@ -1,0 +1,1302 @@
+[
+    {
+        "model": "main.alatolahraga",
+        "pk": 1,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Mat",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 425.000",
+            "rating": 4.5,
+            "gambar": "https://www.fitness24.be/upload/huge/kettler-yoga-mat-pro-07351-110.jpg",
+            "deskripsi": "Mat yoga anti-selip, nyaman untuk berbagai jenis yoga dengan bantalan yang mendukung sendi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 2,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Block",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 202.000",
+            "rating": 3.7,
+            "gambar": "https://down-id.img.susercontent.com/file/31266a164ef08e320e8396e42be22302",
+            "deskripsi": "Blok yoga ringan, ideal untuk membantu keseimbangan dan memperdalam pose."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 3,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Strap",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 295.000",
+            "rating": 4.9,
+            "gambar": "https://www.gaiam.com/cdn/shop/products/602-1206_Purple_A.jpg?v=1588348246",
+            "deskripsi": "Tali yoga fleksibel dengan gesper kokoh, membantu peregangan dan postur."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 4,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Ball",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 352.000",
+            "rating": 3.5,
+            "gambar": "https://m.media-amazon.com/images/I/61J7Dv9Y9ZL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+            "deskripsi": "Bola yoga ideal untuk latihan stabilitas dan keseimbangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 5,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Bolster",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 212.000",
+            "rating": 4.0,
+            "gambar": "https://cdn.shopify.com/s/files/1/2373/4277/products/ekotex-yoga-yoga-bolsters-organic-cotton-yoga-bolsters-filled-with-buckwheat-or-spelt-38602534060291.jpg",
+            "deskripsi": "Bantal yoga empuk, mendukung postur tubuh dalam sesi yoga restoratif."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 6,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Wheel",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 415.000",
+            "rating": 4.2,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJvOdG5s3TTP5qFzzU9DjOf17PpIZo_cbQDQ&s",
+            "deskripsi": "Roda yoga kuat, membantu dalam peregangan punggung dan membuka bahu."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 7,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Towel",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 474.000",
+            "rating": 3.9,
+            "gambar": "https://www.huggermugger.com/wp-content/uploads/2020/08/the-yoga-towel_midnight-blue_04___94727.1678489709.1280.1280-jpg.webp",
+            "deskripsi": "Handuk yoga cepat menyerap, anti-selip untuk menjaga posisi di mat."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 8,
+        "fields": {
+            "cabang_olahraga": "Yoga",
+            "alat_olahraga": "Yoga Sandbag",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 281.000",
+            "rating": 4.1,
+            "gambar": "https://www.huggermugger.com/wp-content/uploads/2020/08/10-lb-yoga-pilates-sandbag_group_02___17779.1652984732.1280.1280.jpg",
+            "deskripsi": "Tas pasir yoga untuk membantu memperdalam pose dengan menambah beban."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 9,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Helmet",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 345.000",
+            "rating": 4.3,
+            "gambar": "https://contents.mediadecathlon.com/p2637980/k$9ea70896dac5a1eba74426b269311daa/road-cycling-helmet-rcr-black-van-rysel-8733900.jpg?f=1920x0&format=auto",
+            "deskripsi": "Helm bersepeda dengan perlindungan maksimal untuk keselamatan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 10,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Gloves",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 182.000",
+            "rating": 4.0,
+            "gambar": "https://contents.mediadecathlon.com/p2136857/k$428b0d7bd07372060bc53ed666128af6/kids-cycling-gloves-500-ages-8-12-years-black-yellow-btwin-8602922.jpg",
+            "deskripsi": "Sarung tangan bersepeda untuk kenyamanan dan cengkraman."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 11,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Shorts",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 444.000",
+            "rating": 4.4,
+            "gambar": "https://contents.mediadecathlon.com/p2731534/k$237a39e0e4626b12ed99691d7068a60f/women-s-high-waisted-fitness-cardio-cycling-shorts-black-domyos-8646280.jpg?f=1920x0&format=auto",
+            "deskripsi": "Celana pendek bersepeda dengan bantalan untuk kenyamanan"
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 12,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Jersey",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 199.000",
+            "rating": 4.2,
+            "gambar": "https://www.canyon.com/dw/image/v2/BCML_PRD/on/demandware.static/-/Sites-canyon-master/default/dwcab8a4fc/images/full/9101990_Ca/2023/9101990_Canyon_Mens_Lightweight_Cycling_Jersey_LGY_full_1.jpg?sw=750&sfrm=png&q=90&bgcolor=F2F2F2",
+            "deskripsi": "Jersey bersepeda yang ringan dan nyaman."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 13,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Shoes",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 457.000",
+            "rating": 4.6,
+            "gambar": "https://contents.mediadecathlon.com/p2687037/k$db2c4861133be4f39a155aa67636ab20/road-cycling-shoes-ncr-white-van-rysel-8776200.jpg",
+            "deskripsi": "Sepatu bersepeda yang memberikan cengkraman kuat pada pedal."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 14,
+        "fields": {
+            "cabang_olahraga": "Cycling",
+            "alat_olahraga": "Cycling Lights",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 170.000",
+            "rating": 3.8,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDDdez2lFwxEJuw59H56KyRhKZvSRfLeiBIg&s",
+            "deskripsi": "Lampu bersepeda untuk visibilitas dan keamanan di jalan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 15,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Racket",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 481.000",
+            "rating": 4.7,
+            "gambar": "https://contents.mediadecathlon.com/p2486925/k$04b378f68d8cd9acbbfcb04eb3c399c6/adult-tennis-racket-tr500-blue-artengo-8487742.jpg?f=1920x0&format=auto",
+            "deskripsi": "Raket tenis ringan untuk permainan yang cepat dan akurat."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 16,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Ball",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 330.000",
+            "rating": 4.5,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsq5NFnNdae72sEtH3miApfbeQExZcuHsDWHvbYgLLtD60ztPVT-azN0LihqAqoKQbmc8&usqp=CAU",
+            "deskripsi": "Bola tenis standar dengan pantulan yang optimal."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 17,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Shoes",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 360.000",
+            "rating": 4.3,
+            "gambar": "https://contents.mediadecathlon.com/p2363380/k$38a9ed7aa958c889550b68620f84dfc9/men-s-multi-court-tennis-shoes-essential-off-white-artengo-8668903.jpg",
+            "deskripsi": "Sepatu tenis dengan daya tahan tinggi untuk performa maksimal."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 18,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Overgrip",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 128.000",
+            "rating": 3.9,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCs5A3n-wBjpeAcSB-RtnW9M58PV2brGbyzQ&s",
+            "deskripsi": "Overgrip raket tenis untuk cengkraman yang lebih baik."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 19,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis String",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 281.000",
+            "rating": 4.4,
+            "gambar": "https://tennishub.in/media/mageplaza/blog/post/t/e/tennis-strings.jpg",
+            "deskripsi": "Senar raket tenis dengan daya tahan tinggi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 20,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Backpack",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 730.000",
+            "rating": 4.1,
+            "gambar": "https://contents.mediadecathlon.com/p2406733/k$80abbb5106a2ed2539abede159de64d9/24-l-tennis-backpack-m-team-black-grey-artengo-8771816.jpg",
+            "deskripsi": "Tas ransel tenis yang praktis dan luas, dirancang untuk membawa raket, sepatu, pakaian, dan aksesori lainnya, dengan kompartemen khusus untuk menjaga perlengkapan tetap terorganisir dan terlindungi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 21,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Hat",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 377.000",
+            "rating": 4.0,
+            "gambar": "https://contents.mediadecathlon.com/p2713902/k$00da948f14bf0cfa45873f421d3dce00/58-cm-tennis-cap-tc-500-white-artengo-8505882.jpg?f=1920x0&format=auto",
+            "deskripsi": "dirancang dengan bahan ringan dan breathable, dilengkapi dengan visor lebar untuk melindungi wajah dari sinar matahari, serta memberikan kenyamanan dan gaya saat bermain di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 22,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Ball Hopper",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 348.000",
+            "rating": 3.9,
+            "gambar": "https://cdn.nwscdn.com/media/wysiwyg/3kf/tennis/Tennis_Ball_Basket_For_Easy_Tennis_Ball_Collection.jpg",
+            "deskripsi": "memiliki kapasitas besar dan desain yang ergonomis, memudahkan pengumpulan dan pengangkutan bola tenis, ideal untuk latihan dan menjaga lapangan tetap rapi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 23,
+        "fields": {
+            "cabang_olahraga": "Tennis",
+            "alat_olahraga": "Tennis Wristband",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 460.000",
+            "rating": 4.1,
+            "gambar": "https://contents.mediadecathlon.com/p2507019/k$bfb9ce22323bca45c599ccc43f62b673/tp-100-tennis-wristband-black-artengo-8022237.jpg?f=1920x0&format=auto",
+            "deskripsi": "terbuat dari bahan lembut dan elastis, dirancang untuk menyerap keringat dan memberikan dukungan pada pergelangan tangan, memastikan kenyamanan dan stabilitas selama permainan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 24,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Gloves",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 177.000",
+            "rating": 3.9,
+            "gambar": "https://contents.mediadecathlon.com/p2217631/k$4d26ae93ce608ca77b00333881293c07/boxing-gloves-500-black-outshock-8651248.jpg",
+            "deskripsi": "terbuat dari bahan berkualitas tinggi, dirancang dengan bantalan empuk untuk memberikan perlindungan maksimal pada tangan dan pergelangan, serta menawarkan kenyamanan dan dukungan selama latihan atau pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 25,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Bag",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 204.000",
+            "rating": 4.3,
+            "gambar": "https://contents.mediadecathlon.com/p1990724/k$ddc4f1e295d444077b510da0eeef119c/adult-punching-kicking-bag-32-kg-outshock-8600730.jpg",
+            "deskripsi": "terbuat dari bahan tahan lama dan berkualitas tinggi, dirancang untuk menyerap pukulan dengan baik, ideal untuk latihan intensif dan pengembangan kekuatan serta teknik tinju."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 26,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Headgear",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 196.000",
+            "rating": 4.1,
+            "gambar": "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/3/4/70348ac8-c521-4b9d-94ed-5fb5b695a6c1.jpg",
+            "deskripsi": "dirancang dengan bantalan tebal dan bahan yang ringan, memberikan perlindungan optimal pada kepala dan wajah, serta memastikan kenyamanan dan visibilitas selama latihan dan pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 27,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Mouthguard",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 490.000",
+            "rating": 4.4,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnr9zs3-lOHHFpAEFrnDMZ55ohoIBb0AOBjA&s",
+            "deskripsi": "terbuat dari bahan yang nyaman dan fleksibel, dirancang untuk memberikan perlindungan maksimal pada gigi dan rahang, sehingga mengurangi risiko cedera saat bertanding atau berlatih."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 28,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Timer",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 284.000",
+            "rating": 4.1,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ2-mrhgSbpod8qqhd4afuS1-e1dZA7w1DRw&s",
+            "deskripsi": "memiliki tampilan digital yang jelas dan mudah dibaca, dilengkapi dengan fungsi pengatur waktu untuk sesi latihan dan jeda, ideal untuk membantu petinju menjaga ritme dan intensitas latihan mereka."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 29,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Punching Mitts",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 379.000",
+            "rating": 4.5,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwCa2kPQ9-qsalqNyXEgeVoiD_iiicXyNMFA&s",
+            "deskripsi": "terbuat dari bahan tahan lama dan empuk, dirancang untuk memberikan perlindungan maksimal saat latihan, serta meningkatkan akurasi dan teknik pukulan petinju dengan desain yang ergonomis."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 30,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Speed Bag",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 100.000",
+            "rating": 4.0,
+            "gambar": "https://m.media-amazon.com/images/I/91YF3ALANVL._AC_UF1000,1000_QL80_.jpg",
+            "deskripsi": "dirancang untuk meningkatkan kecepatan, refleks, dan koordinasi tangan-mata, terbuat dari bahan berkualitas tinggi dan dilengkapi dengan sistem pengisian yang mudah untuk pengalaman latihan yang optimal."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 31,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Shoes",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 496.000",
+            "rating": 4.3,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhw5Wp6tWzqmKPBP_WDcLle9C--gCDvjpIw&s",
+            "deskripsi": "ringan dan fleksibel, dirancang dengan sol anti-selip untuk stabilitas dan traksi maksimal, memberikan kenyamanan dan dukungan saat bergerak cepat di atas ring."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 32,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Hand Wraps",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 202.000",
+            "rating": 3.9,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6IFg2EDnEQ5ud0wuX4WS7ffc0tvn3MHrSPQ&s",
+            "deskripsi": "terbuat dari bahan elastis dan breathable, memberikan dukungan dan perlindungan optimal pada pergelangan dan buku-buku jari, sehingga mengurangi risiko cedera saat latihan atau bertanding."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 33,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Trunks",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 307.000",
+            "rating": 3.7,
+            "gambar": "https://www.msmfightshop.com/cdn/shop/products/titleshort1.jpg?v=1672250451&width=1200",
+            "deskripsi": "bahan ringan dan bernapas, dirancang untuk kenyamanan dan kebebasan bergerak maksimal, cocok digunakan dalam latihan maupun pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 34,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Corner Pads",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 306.000",
+            "rating": 4.1,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIzE_Fi6e200et3HhxKLkGzCsMbRLyWq2MeQ&s",
+            "deskripsi": "empuk dan tahan lama, dirancang untuk melindungi petinju dari benturan keras saat berada di sudut ring, memastikan keamanan dan kenyamanan selama pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 35,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Ring",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 158.000",
+            "rating": 4.3,
+            "gambar": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Boxing_ring.jpg",
+            "deskripsi": "dirancang dengan struktur yang kuat dan bantalan tebal di sekelilingnya, menyediakan area yang aman dan profesional untuk latihan maupun pertandingan tinju."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 36,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Punching Bag Stand",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 391.000",
+            "rating": 4.5,
+            "gambar": "https://images-cdn.ubuy.co.id/64c24c98b49d1f33c120e91d-vevorbrand-free-standing-punching-bag.jpg",
+            "deskripsi": "kokoh dan stabil, dirancang untuk menopang berbagai jenis dan ukuran punching bag, ideal untuk latihan tinju dan kebugaran di rumah atau gym."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 37,
+        "fields": {
+            "cabang_olahraga": "Boxing",
+            "alat_olahraga": "Boxing Round Timer",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 461.000",
+            "rating": 4.0,
+            "gambar": "https://row.venum.com/cdn/shop/products/c_252F3_252F8_252F5_252Fc385ba5f3d3cf5b50d472795f31a10ee53eb2348_TIMER_BLACK_NEOYELLOW_1500_02.jpg?v=1694987256&width=1445",
+            "deskripsi": "tampilan digital yang jelas dan fitur pengaturan waktu yang fleksibel, ideal untuk mengatur durasi dan jeda antar ronde dalam latihan atau pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 38,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Racket",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 327.000",
+            "rating": 4.2,
+            "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgikdQbmpEaGMAfaeJG-pFbQ81-4NYasSVA&s",
+            "deskripsi": "ringan dan kuat ini dirancang dengan bahan berkualitas tinggi untuk menghasilkan pukulan yang cepat dan akurat, cocok bagi pemain yang mencari keseimbangan antara kekuatan dan kontrol."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 39,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Shuttlecock",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 441.000",
+            "rating": 4.6,
+            "gambar": "https://eagle.co.id/wp-content/uploads/2022/11/Shuttlecock-Lite-3.jpg",
+            "deskripsi": "terbuat dari bulu angsa asli, dirancang untuk memberikan stabilitas dan kecepatan optimal, cocok untuk pemain pemula hingga profesional."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 40,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Net",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 126.000",
+            "rating": 4.5,
+            "gambar": "https://i.pinimg.com/564x/bb/cc/7f/bbcc7f165aff1c5eb8fd935080dfbd26.jpg",
+            "deskripsi": "Jaring badminton berkualitas yang kuat dan tahan lama, ideal untuk pertandingan atau latihan di dalam atau luar ruangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 41,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Shoes",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 383.000",
+            "rating": 4.2,
+            "gambar": "https://i.pinimg.com/736x/3d/89/04/3d89040051e74562528df0b35a49c8df.jpg",
+            "deskripsi": "Sepatu badminton ringan dengan grip kuat, memberikan stabilitas dan kelincahan di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 42,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Pole Set",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 458.000",
+            "rating": 3.9,
+            "gambar": "https://i.pinimg.com/564x/34/a1/79/34a179486d3e0c13d735351c276c4f7a.jpg",
+            "deskripsi": "Set tiang kokoh untuk mendirikan jaring badminton dengan mudah di lapangan mana pun."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 43,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Grip Tape",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 153.000",
+            "rating": 4.0,
+            "gambar": "https://i.pinimg.com/564x/97/5d/ed/975dedfc578b8903e05d6569db10371a.jpg",
+            "deskripsi": "Pita grip yang memberikan pegangan nyaman dan anti-slip pada raket, meningkatkan kontrol saat bermain."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 44,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Bag",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 367.000",
+            "rating": 4.9,
+            "gambar": "https://i.pinimg.com/564x/97/20/25/972025f42569c5af2b4757cbe56bb860.jpg",
+            "deskripsi": "Tas badminton yang luas dan tahan lama, dirancang untuk membawa raket, sepatu, dan aksesori lainnya dengan mudah."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 45,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Socks",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 160.000",
+            "rating": 2.9,
+            "gambar": "https://i.pinimg.com/564x/77/4e/de/774edea7723d8cb018dff74557a7e1a7.jpg",
+            "deskripsi": "Kaos kaki badminton yang breathable dan empuk, menjaga kenyamanan kaki selama sesi bermain yang intens."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 46,
+        "fields": {
+            "cabang_olahraga": "Badminton",
+            "alat_olahraga": "Badminton Sweatbands",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 206.000",
+            "rating": 2.7,
+            "gambar": "https://i.pinimg.com/564x/00/c1/2f/00c12fa1ade85cfd106beffccf860f2a.jpg",
+            "deskripsi": "Gelang karet penyerap keringat yang membantu menjaga tangan dan dahi tetap kering saat bermain."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 47,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 177.000",
+            "rating": 4.8,
+            "gambar": "https://i.pinimg.com/736x/fe/c1/7f/fec17fa72bc517d723916f1994986146.jpg",
+            "deskripsi": "Bola basket standar dengan permukaan yang tahan lama dan grip optimal, cocok untuk permainan di dalam maupun luar ruangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 48,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Hoop",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 195.000",
+            "rating": 4.7,
+            "gambar": "https://i.pinimg.com/564x/ef/d9/61/efd961d61bbbb6b523ad82b870d4e83f.jpg",
+            "deskripsi": "Ring basket dengan jaring dan tiang yang stabil, cocok untuk latihan atau permainan santai di halaman rumah atau lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 49,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Jersey",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 415.000",
+            "rating": 2.8,
+            "gambar": "https://i.pinimg.com/564x/82/7d/21/827d212b736b94d9fff77b7551cb1b14.jpg",
+            "deskripsi": "Jersey basket ringan dan breathable, dirancang untuk kenyamanan dan mobilitas optimal di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 50,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Shorts",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 590.000",
+            "rating": 3.4,
+            "gambar": "https://i.pinimg.com/564x/af/c4/f2/afc4f2c970e9894328c938eec39183d1.jpg",
+            "deskripsi": "Celana pendek basket yang nyaman dan elastis, memberikan ruang gerak bebas saat bermain."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 51,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Socks",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 232.000",
+            "rating": 4.6,
+            "gambar": "https://i.pinimg.com/564x/31/b6/f0/31b6f0550bb48e02ae572875156679df.jpg",
+            "deskripsi": "Kaos kaki basket dengan bantalan ekstra di area tumit dan jari, memberikan kenyamanan dan dukungan saat bermain."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 52,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Net",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 290.000",
+            "rating": 4.4,
+            "gambar": "https://i.pinimg.com/564x/27/0b/a4/270ba4175b0fe2202a99e00b855f6525.jpg",
+            "deskripsi": "Jaring basket yang kuat dan tahan lama, memastikan pengalaman bermain yang maksimal di berbagai kondisi cuaca."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 53,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Arm Sleeve",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 265.000",
+            "rating": 3.9,
+            "gambar": "https://i.pinimg.com/564x/90/48/e5/9048e56f59210aee0decfbc5798b472c.jpg",
+            "deskripsi": "Pelindung lengan yang elastis dan nyaman, membantu meningkatkan sirkulasi darah dan melindungi dari cedera saat bermain."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 54,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Pump",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 272.000",
+            "rating": 4.7,
+            "gambar": "https://i.pinimg.com/564x/65/fc/4e/65fc4e387586438008c4ef77b523d382.jpg",
+            "deskripsi": "Pompa bola portabel untuk memastikan tekanan bola tetap ideal untuk permainan yang lebih baik."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 55,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Court Shoes",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 496.000",
+            "rating": 4.0,
+            "gambar": "https://i.pinimg.com/564x/c3/78/12/c37812f44a8fb3d24eda1be781f1dbbd.jpg",
+            "deskripsi": "Sepatu lapangan basket dengan sol yang memberikan cengkeraman kuat, stabilitas, dan respons cepat di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 56,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Whistle",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 128.000",
+            "rating": 4.9,
+            "gambar": "https://i.pinimg.com/564x/c9/18/6b/c9186bbe5be59aeb149028a8ac5bcf0a.jpg",
+            "deskripsi": "Peluit basket dengan suara keras dan jelas, ideal untuk wasit atau pelatih dalam mengatur pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 57,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Training Cone",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 273.000",
+            "rating": 3.6,
+            "gambar": "https://i.pinimg.com/564x/57/ea/2f/57ea2fa129ff6b2b395689088ee69490.jpg",
+            "deskripsi": "Kerucut latihan basket yang digunakan untuk meningkatkan kelincahan, footwork, dan dribbling."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 58,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Rim",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 176.000",
+            "rating": 2.9,
+            "gambar": "https://i.pinimg.com/564x/dd/3f/39/dd3f39e0f4013edaac87e3ffdf9bf4e0.jpg",
+            "deskripsi": "Ring basket standar dengan desain yang kuat dan tahan lama, dapat dipasang pada tiang atau papan basket."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 59,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Backboard",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 317.000",
+            "rating": 3.0,
+            "gambar": "https://i.pinimg.com/564x/2f/d6/47/2fd647770ab6ccba56de0e55d2978854.jpg",
+            "deskripsi": "Papan basket yang kokoh dengan permukaan halus, memberikan pantulan bola yang presisi untuk latihan atau pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 60,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Ball Stand",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 304.000",
+            "rating": 4.0,
+            "gambar": "https://i.pinimg.com/564x/fc/b3/fa/fcb3fafd8cc7148dfdb2643792c62ee3.jpg",
+            "deskripsi": "Stand bola basket yang praktis untuk menyimpan dan menampilkan bola, menjaga bola tetap teratur dan mudah dijangkau."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 61,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Dribbling Gloves",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 296.000",
+            "rating": 4.3,
+            "gambar": "https://i.pinimg.com/564x/34/2c/d4/342cd4ac3dd21ab9b0a9e3c4eb0a8fd5.jpg",
+            "deskripsi": "Sarung tangan khusus yang membantu meningkatkan ketangkasan dan kontrol bola, ideal untuk latihan dribbling agar lebih konsisten."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 62,
+        "fields": {
+            "cabang_olahraga": "Basketball",
+            "alat_olahraga": "Basketball Scoreboard",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 253.000",
+            "rating": 4.3,
+            "gambar": "https://i.pinimg.com/564x/e3/23/f0/e323f046ddb4c72b15f3e755b883f420.jpg",
+            "deskripsi": "Papan skor digital atau manual yang menampilkan skor, waktu, dan fouls, membantu menjaga akurasi selama pertandingan basket."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 63,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Shoes",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 369.000",
+            "rating": 4.6,
+            "gambar": "https://i.pinimg.com/564x/7b/cb/b2/7bcbb225f1377b20cbbace7503995b5f.jpg",
+            "deskripsi": "Sepatu lari berkualitas tinggi dengan bantalan yang nyaman dan desain ergonomis untuk meningkatkan performa dan mengurangi cedera."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 64,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Socks",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 382.000",
+            "rating": 4.8,
+            "gambar": "https://i.pinimg.com/564x/e4/73/d0/e473d0d50c078181642ab8e2a56d17c4.jpg",
+            "deskripsi": "Kaos kaki lari dengan bahan breathable dan anti-blister yang dirancang untuk menjaga kaki tetap nyaman selama aktivitas intens."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 65,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Belt",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 244.000",
+            "rating": 3.8,
+            "gambar": "https://i.pinimg.com/564x/5d/2a/35/5d2a359ec5855f3f49454139544cdb93.jpg",
+            "deskripsi": "Sabuk lari ringan dengan ruang penyimpanan untuk membawa barang-barang penting seperti kunci, ponsel, dan gel energi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 66,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Visor",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 260.000",
+            "rating": 4.2,
+            "gambar": "https://i.pinimg.com/564x/88/3e/d6/883ed6f48268b4f613810017102e8de4.jpg",
+            "deskripsi": "Visor lari yang melindungi mata dari sinar matahari dan memungkinkan aliran udara yang baik tanpa membuat kepala terlalu panas."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 67,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Hydration Pack",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 720.000",
+            "rating": 4.5,
+            "gambar": "https://i.pinimg.com/564x/98/9e/4c/989e4c7e9b0d9154b72df4fad8928e7c.jpg",
+            "deskripsi": "Tas ransel kecil yang dilengkapi dengan kantung hidrasi, ideal untuk menjaga cairan tubuh saat lari jarak jauh."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 68,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Compression Socks",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 119.000",
+            "rating": 4.6,
+            "gambar": "https://i.pinimg.com/564x/b9/5f/19/b95f19d0285d34f176f1a696987fb9fc.jpg",
+            "deskripsi": "Kaos kaki kompresi yang meningkatkan sirkulasi darah dan mempercepat pemulihan otot saat berlari atau setelah berolahraga."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 69,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Gloves",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 495.000",
+            "rating": 4.7,
+            "gambar": "https://www.adidas.co.id/media/catalog/product/i/k/ik4838_1_hardware_photography_front_center_view_grey.jpeg",
+            "deskripsi": "Sarung tangan lari yang ringan dan berinsulasi, menjaga tangan tetap hangat tanpa mengorbankan grip saat berlari di cuaca dingin."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 70,
+        "fields": {
+            "cabang_olahraga": "Running",
+            "alat_olahraga": "Running Cap",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 205.000",
+            "rating": 4.5,
+            "gambar": "https://i.pinimg.com/564x/62/d0/0b/62d00b7d0f52e8d04e41c6416b6be95b.jpg",
+            "deskripsi": "Topi lari ringan yang melindungi dari sinar UV dan menyerap keringat, membantu menjaga kenyamanan selama lari."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 71,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 448.000",
+            "rating": 4.9,
+            "gambar": "https://i.pinimg.com/564x/cd/f8/e4/cdf8e45e45b8460d05879219fee34547.jpg",
+            "deskripsi": "Bola sepak standar yang cocok untuk latihan atau pertandingan, dengan desain dan tekstur yang menawarkan kontrol optimal."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 72,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Goal Net",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 88.000",
+            "rating": 4.8,
+            "gambar": "https://i.pinimg.com/564x/4f/89/c6/4f89c67bc75615b3276028ed709fca03.jpg",
+            "deskripsi": "Jaring gawang berkualitas tinggi yang tahan lama, ideal untuk latihan dan pertandingan sepak bola di lapangan luar atau dalam ruangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 73,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Cleats",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 481.000",
+            "rating": 4.3,
+            "gambar": "https://i.pinimg.com/564x/82/af/cd/82afcd4730e8cb6b16fa2e840478fc05.jpg",
+            "deskripsi": "Sepatu sepak bola dengan sol khusus untuk cengkeraman kuat di berbagai jenis permukaan lapangan, meningkatkan stabilitas dan performa."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 74,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Shin Guards",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 352.000",
+            "rating": 4.2,
+            "gambar": "https://i.pinimg.com/564x/61/a7/8d/61a78dd8585d47ee6a317282cd5b858a.jpg",
+            "deskripsi": "Pelindung tulang kering yang ringan dan tahan benturan untuk perlindungan maksimal selama pertandingan sepak bola."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 75,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Training Ladder",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 469.000",
+            "rating": 3.9,
+            "gambar": "https://i.pinimg.com/564x/22/91/a8/2291a85a8ec23b3b1514f08e1c13341a.jpg",
+            "deskripsi": "Tangga latihan untuk meningkatkan kelincahan, kecepatan kaki, dan koordinasi, cocok untuk latihan sepak bola atau olahraga lainnya."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 76,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Gloves",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 181.000",
+            "rating": 4.8,
+            "gambar": "https://i.pinimg.com/564x/94/b1/62/94b162d9c4f326f58ca488eb836022df.jpg",
+            "deskripsi": "Sarung tangan sepak bola dengan grip optimal, dirancang untuk membantu kiper menangkap bola dengan aman di berbagai kondisi cuaca."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 77,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Helmet",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 245.000",
+            "rating": 4.5,
+            "gambar": "https://i.pinimg.com/564x/f5/7e/e0/f57ee0c171f452092101553aa45984c6.jpg",
+            "deskripsi": "Helm sepak bola yang kuat dan berstandar keamanan tinggi, melindungi kepala dari benturan saat bermain di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 78,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Corner Flag",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 484.000",
+            "rating": 4.7,
+            "gambar": "https://i.pinimg.com/564x/21/5a/79/215a793efda3cc6a6c7dfb4524833963.jpg",
+            "deskripsi": "Bendera sudut sepak bola dengan tiang fleksibel dan warna cerah, membantu menandai area sudut lapangan dengan jelas."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 79,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Net Clips",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 365.000",
+            "rating": 4.6,
+            "gambar": "https://i.pinimg.com/564x/d4/fb/bc/d4fbbcc6a109a5462e1c33120cb6f07b.jpg",
+            "deskripsi": "Klip yang digunakan untuk mengamankan jaring gawang, memastikan jaring tetap terpasang dengan baik selama pertandingan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 80,
+        "fields": {
+            "cabang_olahraga": "Football",
+            "alat_olahraga": "Football Ball Pump",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 448.000",
+            "rating": 4.5,
+            "gambar": "https://i.pinimg.com/736x/96/c8/81/96c881545b6e6ce691d5f91d3664d63a.jpg",
+            "deskripsi": "Pompa bola portabel dengan nozzle yang mudah digunakan, memastikan bola sepak tetap dalam tekanan ideal untuk performa terbaik."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 81,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Goggles",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 459.000",
+            "rating": 4.4,
+            "gambar": "https://m.media-amazon.com/images/I/519lkrS-xfS._AC_SL1500_.jpg",
+            "deskripsi": "Kacamata renang yang melindungi mata dari air dan memungkinkan pandangan yang jelas di dalam air."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 82,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Cap",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 377.000",
+            "rating": 4.3,
+            "gambar": "https://static.thcdn.com/images/large/webp//productimg/1600/1600/13153062-1835002765986147.jpg",
+            "deskripsi": "Topi renang yang dirancang untuk melindungi rambut dari klorin dan mengurangi hambatan di air."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 83,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Fins",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 100.000",
+            "rating": 4.4,
+            "gambar": "https://www.kiefer.com/media/catalog/product/cache/ba5b2db9d6b264edc7ea625b1a071d72/d/f/df300l-kfr_2.jpg",
+            "deskripsi": "Sirip renang yang dikenakan di kaki untuk meningkatkan kecepatan dan kekuatan tendangan saat berenang."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 84,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Kickboard",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 221.000",
+            "rating": 4.5,
+            "gambar": "https://images-cdn.ubuy.co.id/636835d91f33d5034702bfb4-swimming-kickboard-swim-training-aid.jpg",
+            "deskripsi": "Alat berbentuk papan yang digunakan untuk melatih tendangan kaki saat berenang, membantu menguatkan otot kaki."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 85,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Earplugs",
+            "toko": "Toko Chandra Sport, TB Palapa Sport, Mikasa Sport Toko",
+            "harga": "Rp 22.000",
+            "rating": 4.2,
+            "gambar": "https://contents.mediadecathlon.com/p722250/k$e7fc5048427b00cef0d3072bf671ea5d/malleable-swimming-ear-plugs-blue-and-pink-nabaiji-8342902.jpg?f=768x0&format=auto",
+            "deskripsi": "Penutup telinga untuk mencegah air masuk ke telinga selama berenang."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 86,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Pool Floats",
+            "toko": "Toko Alat Olahraga, Toko Sport, Sporttallica",
+            "harga": "Rp 92.000",
+            "rating": 4.3,
+            "gambar": "https://www.swimmingpool.com/images/products/outdoor-living/pool-floats&toys/pool-float-3.jpg",
+            "deskripsi": "Alat apung yang membantu menjaga keseimbangan di air atau digunakan untuk bersantai di kolam renang."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 87,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Nose Clip",
+            "toko": "Dunia Olahraga, Wimledon Sport, Mutiara Sport",
+            "harga": "Rp 147.000",
+            "rating": 4.4,
+            "gambar": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Arena_Noseclip_for_swimming.jpg",
+            "deskripsi": "Jepitan hidung yang mencegah air masuk ke hidung saat berenang."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 88,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Float Belt",
+            "toko": "ACI Sport, Perdana Sport dan Music, JJ Sport Senayan",
+            "harga": "Rp 486.000",
+            "rating": 4.0,
+            "gambar": "https://thelifeguardstore.com/media/catalog/product/cache/ba5b2db9d6b264edc7ea625b1a071d72/6/5/652020.jpg",
+            "deskripsi": "Sabuk apung yang dipakai di pinggang untuk membantu pemula belajar berenang dengan lebih stabil."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 89,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Snorkel",
+            "toko": "Sanjaya Sport, Alfa Sport 365, Budianisa Sport",
+            "harga": "Rp 229.000",
+            "rating": 4.6,
+            "gambar": "https://www.lomo.co.uk/wp-content/uploads/2022/06/Centre-Swimming-Snorkel-1.jpg",
+            "deskripsi": "Alat bantu pernapasan yang memungkinkan berenang tanpa harus mengangkat kepala keluar dari air."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 90,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Dive Rings",
+            "toko": "Toko Buku dan Sport Alisa, Kurnia Sport Toko, Djaya Sport & Music",
+            "harga": "Rp 270.000",
+            "rating": 4.7,
+            "gambar": "https://m.media-amazon.com/images/I/61v4B5K74xL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+            "deskripsi": "Cincin yang tenggelam di dasar kolam dan digunakan dalam latihan menyelam atau permainan di kolam renang."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 91,
+        "fields": {
+            "cabang_olahraga": "Swimming",
+            "alat_olahraga": "Swimming Pool Ladder",
+            "toko": "Toko Cahaya Sport Jatinegara, Badminton Sport, Planet Sport Asia",
+            "harga": "Rp 145.000",
+            "rating": 4.6,
+            "gambar": "https://m.media-amazon.com/images/I/71yRjApaWbL._AC_SX569_.jpg",
+            "deskripsi": "Tangga kolam renang yang digunakan untuk naik atau turun dengan aman ke dalam kolam."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 92,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Club",
+            "toko": "Sport25, Sports Station, Arora Putra Sports & Music",
+            "harga": "Rp 453.000",
+            "rating": 4.5,
+            "gambar": "https://www.collinsdictionary.com/images/thumb/golfclub_115180627_250.jpg?version=6.0.41",
+            "deskripsi": "Alat yang digunakan untuk memukul bola golf, tersedia dalam berbagai jenis seperti driver, iron, dan putter, masing-masing untuk tujuan yang berbeda di lapangan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 93,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Ball",
+            "toko": "Toko New Start Sport, Yes, Sport, Anz Sport",
+            "harga": "Rp 245.000",
+            "rating": 4.4,
+            "gambar": "https://media.istockphoto.com/id/464266137/id/foto/bola-golf.jpg?s=1024x1024&w=is&k=20&c=6YrIiUc-R5ykUkuFDBMA3QkT5KHyHP0RPLgxWObVhWY=",
+            "deskripsi": "Bola kecil bertekstur yang digunakan dalam permainan golf, dirancang untuk jarak dan presisi dalam pukulan."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 94,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Bag",
+            "toko": "Toko Royal Sport, Kettler Toko Olahraga, Bedi Sport",
+            "harga": "Rp 285.000",
+            "rating": 4.3,
+            "gambar": "https://contents.mediadecathlon.com/p2474056/k$7ec34bb7e45a25814ed4f35ba80d9c4b/stand-bag-golf-sangat-ringan-abu-abu-inesis-8735169.jpg?f=768x0&format=auto",
+            "deskripsi": "Tas khusus untuk membawa peralatan golf, seperti stik golf, bola, tee, dan aksesoris lainnya."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 95,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Tee",
+            "toko": "HASport, Royal Sport dan Music, Garuda Sport Music",
+            "harga": "Rp 423.000",
+            "rating": 4.2,
+            "gambar": "https://media.istockphoto.com/id/635841274/id/vektor/woooden-tee-golf-hitam-dan-putih.jpg?s=1024x1024&w=is&k=20&c=xfZYwOWfR07IStGNILmLC75xvfxjrAmsdpqNWt6-zSM=",
+            "deskripsi": "Penyangga kecil yang digunakan untuk menempatkan bola golf saat pukulan pertama di setiap hole."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 96,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Shoes",
+            "toko": "Rivai Sport, Raja Sport",
+            "harga": "Rp 156.000",
+            "rating": 4.4,
+            "gambar": "https://imageio.forbes.com/specials-images/imageserve/608a2a66bb6337d8bbf583aa/FootJoy-Premiere-Series/960x0.jpg?format=jpg&width=1440",
+            "deskripsi": "Sepatu dengan sol khusus untuk memberikan cengkeraman yang baik di lapangan golf, membantu stabilitas dan keseimbangan saat swing."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 97,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Rangefinder",
+            "toko": "Saudara Sport, Samudra Sport (Badminton Sport), Prima Jaya Sport",
+            "harga": "Rp 432.000",
+            "rating": 4.5,
+            "gambar": "https://m.media-amazon.com/images/I/71ZjOb3uhhL._AC_SX522_.jpg",
+            "deskripsi": "Alat optik atau elektronik yang digunakan untuk mengukur jarak dari posisi pemain ke target, seperti lubang atau bendera di lapangan golf."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 98,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Putter",
+            "toko": "Toko Olahraga, Toko Olahraga Lenteng Agung, Daya Prima Sport",
+            "harga": "Rp 367.000",
+            "rating": 4.8,
+            "gambar": "https://images-cdn.ubuy.co.id/633adf02fdfb69642a5914d7-golf-putter-two-ways-golf-putters-for.jpg",
+            "deskripsi": "Stik golf yang digunakan untuk pukulan akhir di area green, dirancang untuk mengarahkan bola ke dalam lubang dengan presisi."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 99,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Swing Trainer",
+            "toko": "My Sport Music, Cigayur Sport, Toko Olahraga",
+            "harga": "Rp 427.000",
+            "rating": 4.9,
+            "gambar": "https://pure2improve.com/wp-content/uploads/2022/08/P2I641000_2_front-1000x1000.jpg",
+            "deskripsi": "Alat bantu latihan yang digunakan untuk membantu pemain meningkatkan teknik ayunan golf mereka."
+        }
+    },
+    {
+        "model": "main.alatolahraga",
+        "pk": 100,
+        "fields": {
+            "cabang_olahraga": "Golf",
+            "alat_olahraga": "Golf Driver",
+            "toko": "Sahabat Olahraga Sahabat Olahraga, Sinar Surya Sport, Toko Sport",
+            "harga": "Rp 263.000",
+            "rating": 4.4,
+            "gambar": "https://contents.mediadecathlon.com/p2491102/k$2d655250c1c40d8a79cfd18dc81884dc/driver-grafit-golf-untuk-pengguna-tangan-kanan-inesis-100-inesis-8798299.jpg?f=768x0&format=auto",
+            "deskripsi": "Jenis stik golf dengan kepala besar, digunakan untuk pukulan jarak jauh dari tee di awal hole."
+        }
+    }
+]

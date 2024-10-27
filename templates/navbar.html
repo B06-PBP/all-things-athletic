@@ -1,16 +1,15 @@
 {% load static %}
 
-<header class="bg-#adba5e">
+<header class="bg-[#adba5e]">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-24 items-center justify-between"> <!-- Sesuaikan tinggi navbar -->
+    <div class="flex h-24 items-center justify-between">
       <div class="flex-1 md:flex md:items-center md:gap-12">
         <div class="flex items-center gap-4">
           <a class="block text-teal-600" href="#">
             <span class="sr-only">Home</span>
-            <!-- Logo -->
-            <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo"> <!-- Tambah class 'logo' -->
+            <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo">
           </a>
-
+          
           <!-- Search Bar -->
           <form class="hidden md:flex">
             <label for="search" class="sr-only">Search</label>
@@ -24,54 +23,93 @@
         </div>
       </div>
 
-      <!-- Sisanya tetap sama -->
       <div class="md:flex md:items-center md:gap-12">
         <nav aria-label="Global" class="hidden md:block">
           <ul class="flex items-center gap-6 text-sm">
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_main' %}" style="color: #344f1f;"> Home </a>
+              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_main' %}" style="color: #344f1f;">Home</a>
             </li>
-        
-            <!-- Dropdown for Category -->
-            <li class="relative group">
-              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="#" style="color: #344f1f;"> Category </a>
-              <ul class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-48">
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Yoga</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cycling</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tennis</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Boxing</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Badminton</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Basketball</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Running</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Football</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Swimming</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Golf</a></li>
-              </ul>
-            </li>
-
+            {% if request.user.is_authenticated and request.user.role == 'admin' %}
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_articles' %}" style="color: #344f1f;"> Articles </a>
-            </li>            
+                <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:alat_list' %}" style="color: #344f1f;">Alat Olahraga</a>
+            </li>
+            {% endif %}
+            {% if request.user.is_authenticated and request.user.role == 'user' %}
+            <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:review_list' %}" style="color: #344f1f;">Review</a>
+            </li>
+            <li>
+                <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:rating_list' %}" style="color: #344f1f;">Rating</a>
+            </li>
+            {% endif %}
+            <li>
+              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_articles' %}" style="color: #344f1f;">Articles</a>
+            </li>
           </ul>
         </nav>
 
+        {% if user.is_authenticated %}
+        <!-- Category Dropdown -->
         <div class="hidden md:relative md:block">
           <button
             type="button"
-            id="profileButton"
-            class="overflow-hidden rounded-full border border-gray-300 shadow-inner"
+            id="categoryButton"
+            class="text-gray-500 transition hover:text-gray-500/75 font-bold cursor-pointer"
+            style="color: #344f1f;"
           >
-            <span class="sr-only">Toggle dashboard menu</span>
-            <img
-                src="{% static 'image/user.jpg' %}"
-                alt=""
-                class="size-10 object-cover"
-            />
+            Category
           </button>
-        
+          <div
+            id="categoryDropdown"
+            class="hidden absolute right-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
+            role="menu"
+          >
+            <ul class="p-2">
+              <li><a href="{% url 'main:show_yoga' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Yoga</a></li>
+              <li><a href="{% url 'main:show_cycling' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cycling</a></li>
+              <li><a href="{% url 'main:show_football' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Football</a></li>
+              <li><a href="{% url 'main:show_swimming' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Swimming</a></li>
+              <li><a href="{% url 'main:show_basketball' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Basketball</a></li>
+              <li><a href="{% url 'main:show_tennis' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tennis</a></li>
+              <li><a href="{% url 'main:show_boxing' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Boxing</a></li>
+              <li><a href="{% url 'main:show_badminton' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Badminton</a></li>
+              <li><a href="{% url 'main:show_running' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Running</a></li>
+              <li><a href="{% url 'main:show_golf' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Golf</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <form method="POST" action="{% url 'main:logout' %}" class="md:ml-4">
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+            role="menuitem"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+              />
+            </svg>
+            Logout
+          </button>
+        </form>
+
+        <!-- Profile Dropdown -->
+        <div class="hidden md:relative md:block">
           <div
             id="profileDropdown"
-            class="hidden absolute end-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
+            class="hidden absolute right-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
             role="menu"
           >
             <div class="p-2">
@@ -83,41 +121,21 @@
                 My profile
               </a>
             </div>
-        
-            <div class="p-2">
-              <form method="POST" action="#">
-                <button
-                  type="submit"
-                  class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                  role="menuitem"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                    />
-                  </svg>
-        
-                  Logout
-                </button>
-              </form>
-            </div>
           </div>
         </div>
+        {% else %}
+        <div class="flex items-center gap-4">
+          <a href="{% url 'main:login' %}" class="text-gray-500 hover:text-gray-600">Login</a>
+          <a href="{% url 'main:register' %}" class="text-gray-500 hover:text-gray-600">Register</a>
+        </div>
+        {% endif %}
 
+        <!-- Mobile Menu Button -->
         <div class="block md:hidden">
           <button class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="size-5"
+              class="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -133,17 +151,34 @@
 </header>
 
 <script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const categoryButton = document.getElementById('categoryButton');
+  const categoryDropdown = document.getElementById('categoryDropdown');
   const profileButton = document.getElementById('profileButton');
   const profileDropdown = document.getElementById('profileDropdown');
 
-  profileButton.addEventListener('click', () => {
-    profileDropdown.classList.toggle('hidden');
+  // Toggle category dropdown
+  categoryButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    categoryDropdown.classList.toggle('hidden');
+    profileDropdown?.classList.add('hidden'); // Hide profile dropdown if open
   });
 
-  // Menutup dropdown saat klik di luar elemen dropdown
-  window.addEventListener('click', function(e) {
-    if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
-      profileDropdown.classList.add('hidden');
+  // Toggle profile dropdown
+  profileButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    profileDropdown.classList.toggle('hidden');
+    categoryDropdown?.classList.add('hidden'); // Hide category dropdown if open
+  });
+
+  // Close dropdowns when clicking outside
+  window.addEventListener('click', (e) => {
+    if (!categoryButton?.contains(e.target) && !categoryDropdown?.contains(e.target)) {
+      categoryDropdown?.classList.add('hidden');
+    }
+    if (!profileButton?.contains(e.target) && !profileDropdown?.contains(e.target)) {
+      profileDropdown?.classList.add('hidden');
     }
   });
+});
 </script>

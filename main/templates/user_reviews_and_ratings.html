@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container mx-auto mt-8 max-w-4xl">
+    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Alat Olahraga Ratings & Reviews</h2>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-gray-200">
+        <button class="tab-btn px-4 py-2 font-semibold" onclick="showTab('ratings')">Ratings</button>
+        <button class="tab-btn px-4 py-2 font-semibold" onclick="showTab('reviews')">Reviews</button>
+        <button class="tab-btn px-4 py-2 font-semibold" onclick="showTab('add-rating')">Add New Rating</button>
+        <button class="tab-btn px-4 py-2 font-semibold" onclick="showTab('add-review')">Add New Review</button>
+    </div>
+
+    <!-- Ratings Section -->
+    <div id="ratings" class="tab-content">
+        <h3 class="text-lg font-semibold mt-6">Ratings</h3>
+        <div class="grid gap-6 md:grid-cols-2">
+            {% for rating in user_ratings %}
+            <div class="bg-white p-6 rounded-lg shadow-lg border">
+                <h4 class="font-semibold">{{ rating.alat_olahraga.alat_olahraga }}</h4>
+                <p class="text-yellow-500 font-bold">{{ rating.rating }} ★</p>
+                <p>{{ rating.comment }}</p>
+                <p class="text-sm text-gray-400 mt-4">{{ rating.created_at|date:"F j, Y" }}</p>
+            </div>
+            {% empty %}
+            <p>No ratings available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div id="reviews" class="tab-content hidden">
+        <h3 class="text-lg font-semibold mt-6">Reviews</h3>
+        <div class="grid gap-6 md:grid-cols-2">
+            {% for review in user_reviews %}
+            <div class="bg-white p-6 rounded-lg shadow-lg border">
+                <h4 class="font-semibold">{{ review.alat_olahraga.alat_olahraga }}</h4>
+                <p class="text-yellow-500 font-bold">{{ review.rating }} ★</p>
+                <p>{{ review.review_text }}</p>
+                <p class="text-sm text-gray-400 mt-4">{{ review.created_at|date:"F j, Y" }}</p>
+            </div>
+            {% empty %}
+            <p>No reviews available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+<!-- Add New Rating Section -->
+<div id="add-rating" class="tab-content hidden">
+    <h3 class="text-lg font-semibold mt-6">Add New Rating</h3>
+    <form method="post" action="{% url 'main:user_reviews_and_ratings' %}" class="bg-white shadow-lg rounded-lg px-8 py-10">
+        {% csrf_token %}
+        {{ rating_form.non_field_errors }}
+        
+        <div class="mb-4">
+            <label for="alat_olahraga" class="text-sm font-semibold">Alat Olahraga:</label>
+            <select name="alat_olahraga" class="w-full border rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">Select Alat Olahraga</option>
+                {% for alat in alat_olahraga_list %}
+                <option value="{{ alat.id }}">{{ alat.alat_olahraga }}</option>
+                {% endfor %}
+            </select>
+            <p class="text-red-500 text-sm">{{ rating_form.alat_olahraga.errors }}</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="rating" class="text-sm font-semibold">Rating (1-5):</label>
+            <input type="number" name="rating" min="1" max="5" step="0.1" placeholder="Enter rating"
+                   class="w-full border rounded-lg p-3"
+                   value="{{ rating_form.rating.value }}">
+            <p class="text-red-500 text-sm">{{ rating_form.rating.errors }}</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="comment" class="text-sm font-semibold">Comment:</label>
+            <textarea name="comment" placeholder="Add your comment"
+                      class="w-full border rounded-lg p-3">{{ rating_form.comment.value }}</textarea>
+            <p class="text-red-500 text-sm">{{ rating_form.comment.errors }}</p>
+        </div>
+
+        <button type="submit" name="submit_rating" class="bg-blue-500 text-white font-semibold py-2 px-6 rounded-lg">Submit Rating</button>
+    </form>
+</div>
+
+<!-- Add New Review Section -->
+<div id="add-review" class="tab-content hidden">
+    <h3 class="text-lg font-semibold mt-6">Add New Review</h3>
+    <form method="post" action="{% url 'main:user_reviews_and_ratings' %}" class="bg-white shadow-lg rounded-lg px-8 py-10">
+        {% csrf_token %}
+        {{ review_form.non_field_errors }}
+
+        <div class="mb-4">
+            <label for="alat_olahraga" class="text-sm font-semibold">Alat Olahraga:</label>
+            <select name="alat_olahraga" class="w-full border rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">Select Alat Olahraga</option>
+                {% for alat in alat_olahraga_list %}
+                <option value="{{ alat.id }}">{{ alat.alat_olahraga }}</option>
+                {% endfor %}
+            </select>
+            <p class="text-red-500 text-sm">{{ review_form.alat_olahraga.errors }}</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="rating" class="text-sm font-semibold">Rating (1-5):</label>
+            <input type="number" name="rating" min="1" max="5" step="0.1" placeholder="Enter rating"
+                   class="w-full border rounded-lg p-3"
+                   value="{{ review_form.rating.value }}">
+            <p class="text-red-500 text-sm">{{ review_form.rating.errors }}</p>
+        </div>
+
+        <div class="mb-4">
+            <label for="review_text" class="text-sm font-semibold">Review:</label>
+            <textarea name="review_text" placeholder="Add your review"
+                      class="w-full border rounded-lg p-3">{{ review_form.review_text.value }}</textarea>
+            <p class="text-red-500 text-sm">{{ review_form.review_text.errors }}</p>
+        </div>
+
+        <button type="submit" name="submit_review" class="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg">Submit Review</button>
+    </form>
+</div>
+<script>
+    function showTab(tabName) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.add('hidden'));
+        document.getElementById(tabName).classList.remove('hidden');
+    }
+</script>
+
+{% endblock %}

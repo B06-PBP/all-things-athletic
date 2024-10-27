@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container mx-auto mt-8 max-w-lg">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create New Alat Olahraga</h2>
+
+    <form method="post" action="{% url 'main:create_alat' %}" class="bg-white shadow-lg rounded-lg px-8 py-10 mb-12">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="space-y-6">
+            <div class="mb-4">
+                <label for="cabang_olahraga" class="block text-gray-700 text-sm font-semibold mb-2">Cabang Olahraga:</label>
+                <input type="text" name="cabang_olahraga" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                <p class="text-red-500 text-sm mt-1">{{ form.cabang_olahraga.errors }}</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="alat_olahraga" class="block text-gray-700 text-sm font-semibold mb-2">Alat Olahraga:</label>
+                <input type="text" name="alat_olahraga" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                <p class="text-red-500 text-sm mt-1">{{ form.alat_olahraga.errors }}</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="deskripsi" class="block text-gray-700 text-sm font-semibold mb-2">Deskripsi:</label>
+                <textarea name="deskripsi" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"></textarea>
+                <p class="text-red-500 text-sm mt-1">{{ form.deskripsi.errors }}</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="harga" class="block text-gray-700 text-sm font-semibold mb-2">Harga:</label>
+                <input type="text" name="harga" id="harga" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200" placeholder="Rp 0">
+                <p class="text-red-500 text-sm mt-1">{{ form.harga.errors }}</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="toko" class="block text-gray-700 text-sm font-semibold mb-2">Toko:</label>
+                <input type="text" name="toko" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                <p class="text-red-500 text-sm mt-1">{{ form.toko.errors }}</p>
+            </div>
+
+            <div class="mb-4">
+                <label for="rating" class="block text-gray-700 text-sm font-semibold mb-2">Rating:</label>
+                <input type="number" name="rating" step="0.1" min="1" max="5" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200" placeholder="Enter rating from 1 to 5">
+                <p class="text-red-500 text-sm mt-1">{{ form.rating.errors }}</p>
+            </div>
+            
+            <div class="mb-4">
+                <label for="gambar" class="block text-gray-700 text-sm font-semibold mb-2">Gambar URL:</label>
+                <input type="text" name="gambar" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                <p class="text-red-500 text-sm mt-1">{{ form.gambar.errors }}</p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-8">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                Create
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Format input in "harga" field to "Rp 123.456" format
+    document.getElementById('harga').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/[^,\d]/g, '');
+        if (value) {
+            e.target.value = 'Rp ' + parseInt(value, 10).toLocaleString('id-ID');
+        } else {
+            e.target.value = '';
+        }
+    });
+</script>
+
+{% endblock content %}

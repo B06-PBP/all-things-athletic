@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta %}
+<title>Products</title>
+{% endblock meta %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="max-w-5xl mx-auto grid grid-cols-2 gap-4 p-6">
+    {% for product in data_alat_olahraga %}
+    <div class="bg-[#869A69] rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-200 flex flex-col justify-between">
+        <!-- Bagian atas kartu -->
+        <div class="p-4 flex flex-col items-center bg-[#ADBA5E]">
+            <img class="w-full h-48 object-contain mb-4" src="{{ product.gambar }}" alt="{{ product.alat_olahraga }}">
+            <h2 class="text-xl font-bold text-center text-black uppercase">{{ product.alat_olahraga }}</h2>
+        </div>
+
+        <!-- Bagian bawah kartu -->
+        <div class="bg-[#65AAC2] p-4 flex flex-col justify-between flex-grow">
+            <!-- Informasi harga dan rating -->
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-[#E7E5D7] text-black py-1 px-2 rounded-full text-lg font-semibold">{{ product.harga }}</span>
+                <span class="bg-[#E7E5D7] text-black py-1 px-2 rounded-full text-sm font-semibold">{{ product.rating }} ★</span>
+            </div>
+
+            <!-- Bagian deskripsi produk dengan min-height dan flex-grow -->
+            <div class="flex-grow mb-4">
+                <h4 class="text-white font-semibold mb-2">Deskripsi:</h4>
+                <p class="text-white font-medium" style="min-height: 60px;">{{ product.deskripsi }}</p>
+            </div>
+
+            <!-- Bagian toko (Store) dengan flex-grow -->
+            <div class="flex-grow">
+                <h4 class="text-white font-semibold mb-2">Store:</h4>
+                <ul class="text-white list-disc pl-5">
+                    {% for store in product.toko_list %}
+                    <li>{{ store }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Tombol Review dan Rating -->
+            <div class="flex justify-between mt-4">
+                <button class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]" onclick="handleReview('{{ product.alat_olahraga }}')">Review</button>
+                <button class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]" onclick="handleRating('{{ product.alat_olahraga }}', '{{ product.rating }}')">Rating</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function handleReview(productName) {
+        fetch(`/review/${productName}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Review for ${productName}: ${data.review}`);
+        })
+        .catch(error => console.error('Error fetching review:', error));
+    }
+
+    function handleRating(productName, rating) {
+        fetch(`/rating/${productName}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`${productName} has a rating of ${data.rating} stars`);
+        })
+        .catch(error => console.error('Error fetching rating:', error));
+    }
+</script>
+{% endblock %}

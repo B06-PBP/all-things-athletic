@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container mx-auto mt-8 max-w-lg">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create New Review</h2>
+
+    <form method="post" action="{% url 'main:review_create' %}" class="bg-white shadow-lg rounded-lg px-8 py-10 mb-12">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="space-y-6">
+            <!-- Alat Olahraga Selection -->
+            <div class="mb-4">
+                <label for="alat_olahraga" class="block text-gray-700 text-sm font-semibold mb-2">Alat Olahraga:</label>
+                <select name="alat_olahraga" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                    {% for alat in alat_olahraga_list %}
+                        <option value="{{ alat.id }}">{{ alat }}</option>
+                    {% endfor %}
+                </select>
+                <p class="text-red-500 text-sm mt-1">{{ form.alat_olahraga.errors }}</p>
+            </div>
+
+            <!-- Review Text -->
+            <div class="mb-4">
+                <label for="review_text" class="block text-gray-700 text-sm font-semibold mb-2">Review:</label>
+                <textarea name="review_text" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"></textarea>
+                <p class="text-red-500 text-sm mt-1">{{ form.review_text.errors }}</p>
+            </div>
+
+            <!-- Rating -->
+            <div class="mb-4">
+                <label for="rating" class="block text-gray-700 text-sm font-semibold mb-2">Rating:</label>
+                <input type="number" name="rating" step="0.1" min="1" max="5" class="w-full border border-gray-300 rounded-lg p-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200" placeholder="Enter rating from 1 to 5">
+                <p class="text-red-500 text-sm mt-1">{{ form.rating.errors }}</p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mt-8">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                Submit Review
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
