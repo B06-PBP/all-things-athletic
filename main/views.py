@@ -98,57 +98,6 @@ def user_reviews_and_ratings(request):
     }
     return render(request, 'user_reviews_and_ratings.html', context)
   
-# def create_rating(request, alat_id):
-#     alat = get_object_or_404(AlatOlahraga, pk=alat_id)
-#     if request.method == 'POST':
-#         rating_value = request.POST.get('rating')
-#         comment = request.POST.get('comment')
-#         rating, created = Rating.objects.update_or_create(
-#             alat_olahraga=alat, user=request.user,
-#             defaults={'rating': rating_value, 'comment': comment}
-#         )
-#         alat.update_rating()  # Update the average rating
-#         return redirect('alat_detail', alat_id=alat.id)
-#     return render(request, 'ratings/create_rating.html', {'alat': alat})
-
-# def delete_rating(request, rating_id):
-#     rating = get_object_or_404(Rating, pk=rating_id, user=request.user)
-#     alat = rating.alat_olahraga
-#     rating.delete()
-#     alat.update_rating()  # Update the average rating after deletion
-#     return redirect('alat_detail', alat_id=alat.id)
-
-# def create_review(request, alat_id):
-#     alat = get_object_or_404(AlatOlahraga, pk=alat_id)
-#     if request.method == 'POST':
-#         review_text = request.POST.get('review_text')
-#         rating_value = request.POST.get('rating')
-#         review, created = Review.objects.update_or_create(
-#             alat_olahraga=alat, user=request.user,
-#             defaults={'review_text': review_text, 'rating': rating_value}
-#         )
-#         alat.update_rating()  # Update the average rating based on new review
-#         return redirect('alat_detail', alat_id=alat.id)
-#     return render(request, 'reviews/create_review.html', {'alat': alat})
-
-# def delete_review(request, review_id):
-#     review = get_object_or_404(Review, pk=review_id, user=request.user)
-#     alat = review.alat_olahraga
-#     review.delete()
-#     alat.update_rating()  # Update the average rating after deletion
-#     return redirect('alat_detail', alat_id=alat.id)
-
-# def get_rating(request, product_id):
-#     product = get_object_or_404(AlatOlahraga, id=product_id)
-#     ratings = product.ratings.all()
-#     average_rating = ratings.aggregate(models.Avg('rating'))['rating__avg'] or 0
-#     return JsonResponse({'average_rating': average_rating})
-
-# def get_reviews(request, product_id):
-#     product = get_object_or_404(AlatOlahraga, id=product_id)
-#     reviews = list(product.reviews.values('user__username', 'review'))
-#     return JsonResponse({'reviews': reviews})
-
 def show_articles(request):
     return render(request, "articles.html")
 
@@ -377,32 +326,50 @@ def review_list(request):
 
     return render(request, 'review_list.html', {'page_obj': page_obj})
 
+from django.db import IntegrityError
+
+from django.db import IntegrityError
+
 @login_required
 def rating_create(request):
     if request.method == 'POST':
         form = RatingForm(request.POST)
         if form.is_valid():
-            rating = form.save(commit=False)
-            rating.user = request.user  # Set to the logged-in CustomUser instance
+            rating = form.save(commit=False)  # Temporarily save the form data without committing to the database
+            rating.user = request.user  # Associate the rating with the logged-in user
 
+            # Retrieve the AlatOlahraga ID from the form data
             alat_olahraga_id = request.POST.get('alat_olahraga')
-            if AlatOlahraga.objects.filter(id=alat_olahraga_id).exists():
-                rating.alat_olahraga = AlatOlahraga.objects.get(id=alat_olahraga_id)
+
+            try:
+                # Check if the AlatOlahraga object exists
+                alat = AlatOlahraga.objects.get(id=alat_olahraga_id)
+                rating.alat_olahraga = alat  # Link the rating to the AlatOlahraga object
+                
+                # Save the rating to the database
                 rating.save()
-                return redirect('main:rating_list')
-            else:
-                form.add_error('alat_olahraga', 'Alat Olahraga yang dipilih tidak valid.')
+                return redirect('main:rating_list')  # Redirect to the rating list page
+
+            except AlatOlahraga.DoesNotExist:
+                # If AlatOlahraga does not exist, add an error message to the form
+                form.add_error('alat_olahraga', 'The selected Alat Olahraga does not exist.')
+
+            except IntegrityError as e:
+                # Catch and log the IntegrityError if a foreign key constraint fails
+                form.add_error(None, 'An error occurred while saving the rating. Please try again.')
+
         else:
-            # Jika form tidak valid, dapat memunculkan error di sini
+            # Print form errors for debugging if the form is invalid
             print(form.errors)
     else:
-        form = RatingForm()
+        form = RatingForm()  # Initialize a new form if the request is GET
 
     context = {
         'form': form,
-        'alat_olahraga_list': AlatOlahraga.objects.all()
+        'alat_olahraga_list': AlatOlahraga.objects.all()  # Populate the dropdown with all AlatOlahraga options
     }
-    return render(request, 'rating_create.html', context)
+    return render(request, 'rating_create.html', context)  # Render the form with the context
+
 
 def rating_edit(request, pk):
     rating = get_object_or_404(Rating, pk=pk)
@@ -424,26 +391,35 @@ def review_create(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user  # Assign current user to review
+            review = form.save(commit=False)  # Save without committing to database
+            review.user = request.user  # Associate the review with the logged-in user
 
-            # Cek apakah alat olahraga yang dipilih ada di database
+            # Retrieve the AlatOlahraga ID from form data
             alat_olahraga_id = request.POST.get('alat_olahraga')
-            if AlatOlahraga.objects.filter(id=alat_olahraga_id).exists():
-                review.alat_olahraga = AlatOlahraga.objects.get(id=alat_olahraga_id)
+            try:
+                # Ensure the AlatOlahraga instance exists
+                alat = AlatOlahraga.objects.get(id=alat_olahraga_id)
+                review.alat_olahraga = alat  # Link the review to the AlatOlahraga object
+                
+                # Save the review to the database
                 review.save()
-                return redirect('main:review_list')
-            else:
-                form.add_error('alat_olahraga', 'Alat Olahraga yang dipilih tidak valid.')
+                return redirect('main:review_list')  # Redirect to the review list page
+
+            except AlatOlahraga.DoesNotExist:
+                form.add_error('alat_olahraga', 'The selected Alat Olahraga does not exist.')
+
+            except IntegrityError as e:
+                form.add_error(None, 'An error occurred while saving the review. Please try again.')
+
         else:
-            # Jika form tidak valid, bisa memunculkan error di sini
-            print(form.errors)
+            print("Form validation errors:", form.errors)
+
     else:
         form = ReviewForm()
 
     context = {
         'form': form,
-        'alat_olahraga_list': AlatOlahraga.objects.all() 
+        'alat_olahraga_list': AlatOlahraga.objects.all()  # Populate dropdown with AlatOlahraga options
     }
     return render(request, 'review_create.html', context)
 
@@ -534,3 +510,19 @@ def get_article_details(request, article_id):
         return JsonResponse(article)
     else:
         return JsonResponse({'error': 'Article not found'}, status=404)
+
+# from django.contrib.auth.decorators import login_required
+# from django.shortcuts import render
+# from .models import Review, Rating
+
+# @login_required
+# def profile(request):
+#     user_reviews = Review.objects.filter(user=request.user)
+#     user_ratings = Rating.objects.filter(user=request.user)
+
+#     context = {
+#         'user': request.user,
+#         'user_reviews': user_reviews,
+#         'user_ratings': user_ratings,
+#     }
+#     return render(request, 'profile.html', context)

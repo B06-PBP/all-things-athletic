@@ -43,41 +43,12 @@
 
             <!-- Tombol Review dan Rating -->
             <div class="flex justify-between mt-4">
-                <button class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]" onclick="handleReview('{{ product.alat_olahraga }}')">Review</button>
-                <button class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]" onclick="handleRating('{{ product.alat_olahraga }}', '{{ product.rating }}')">Rating</button>
-            </div>
+                <a href="{% url 'main:review_create' %}?product_id={{ product.id }}" class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]">Review</a>
+                <a href="{% url 'main:rating_create' %}?product_id={{ product.id }}" class="bg-[#E7E5D7] text-black py-2 px-4 rounded-full hover:bg-[#D0CFC4]">Rating</a>
+            </div>            
         </div>
     </div>
     {% endfor %}
 </div>
 
-<script>
-    function handleReview(productName) {
-        fetch(`/review/${productName}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(`Review for ${productName}: ${data.review}`);
-        })
-        .catch(error => console.error('Error fetching review:', error));
-    }
-
-    function handleRating(productName, rating) {
-        fetch(`/rating/${productName}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(`${productName} has a rating of ${data.rating} stars`);
-        })
-        .catch(error => console.error('Error fetching rating:', error));
-    }
-</script>
 {% endblock %}
