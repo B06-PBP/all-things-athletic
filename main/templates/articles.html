@@ -94,11 +94,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h2 class="text-xl font-bold">${data.title}</h2>
                                 <p>${data.short_description}</p>
                                 <a href="/articles${data.id}/" class="mt-4 inline-block text-center bg-[#65aac2] text-white py-2 px-4 rounded-full hover:bg-[#4a9cba]">Show More</a> <!-- Tombol untuk mengarahkan ke halaman artikel -->
+                                <br> <!-- Menambahkan space setelah judul -->
+                                <p>${data.short_description}</p>
+                                <br> <!-- Menambahkan space setelah deskripsi singkat -->
+                                <a href="/articles${data.id}/" class="mt-4 inline-block text-center bg-[#65aac2] text-white py-2 px-4 rounded-full hover:bg-[#4a9cba]">Show More</a>
                             </div>
                         </div>
                     `;
                     // Tampilkan pop-up dan overlay
                     ajaxContent.style.display = 'flex'; // Menggunakan flex untuk pusatkan konten
+                    ajaxContent.style.display = 'flex';
                     overlay.style.display = 'block';
                 })
                 .catch(error => console.error('Error fetching article details:', error));

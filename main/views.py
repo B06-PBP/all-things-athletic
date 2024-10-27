@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 from .models import AlatOlahraga, Rating, Review
+from django.shortcuts import redirect, render
+from django.http import JsonResponse
+from .models import AlatOlahraga
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
@@ -52,6 +55,38 @@ def login_user(request):
     else:
         form = CustomUserLoginForm()
     return render(request, 'login.html', {'form': form})
+import datetime
+from django.http import HttpResponseRedirect
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
+def login_user(request):
+   if request.method == 'POST':
+      form = AuthenticationForm(data=request.POST)
+
+      if form.is_valid():
+        user = form.get_user()
+        login(request, user)
+        response = HttpResponseRedirect(reverse("main:show_main"))
+        response.set_cookie('last_login', str(datetime.datetime.now()))
+        return response
+      else:
+        messages.error(request, "Invalid username or password. Please try again.")
+
+   else:
+      form = AuthenticationForm(request)
+   context = {'form': form}
+   return render(request, 'login.html', context)
 
 def logout_user(request):
     logout(request)
@@ -61,6 +96,7 @@ def logout_user(request):
     return redirect('main:login')
 
 @login_required(login_url="/login/")
+@login_required(login_url="/login")
 def show_main(request):
     print("Accessing show_main view")  # Ini akan muncul di konsol jika view ini terakses
     context = {
@@ -511,24 +547,28 @@ def get_article_details(request, article_id):
             "title": "Berstandar Internasional, Jakarta Running Festival 2024 Manjakan Para Peserta",
             "image_url": "/static/image/article1.jpg",
             "short_description": "Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024...",
+            "short_description": "Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024 resmi dibuka pada Kamis (10/10/2024) di Istora Senayan, Jakarta. Pada gelaran tahun ini, para peserta dimanjakan dengan sejumlah...",
         },
         2: {
             "id": 2,
             "title": "Soft tennis - Permainan solid bawa beregu putri Jakarta dulang emas",
             "image_url": "/static/image/article2.jpg",
             "short_description": "DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri...",
+            "short_description": "DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri Pekan Olahraga Nasional (PON) XXI Aceh-Sumatera Utara 2024 berkat permainan yang solid saat...",
         },
         3: {
             "id": 3,
             "title": "7 Lapangan Golf Terbaik di Jakarta, Fasilitas dan Biayanya",
             "image_url": "/static/image/article3.jpg",
             "short_description": "Salah satu lapangan golf di Jakarta dalam daftar ini dianggap sebagai lapangan kelas...",
+            "short_description": "Golf sudah hadir sejak lama di Indonesia, yaitu dari tahun 1872. Namun, olahraga ini tidak sepopuler sepak bola atau bulu tangkis. Salah satu alasan utamanya adalah anggapan bahwa golf...",
         },
         4: {
             "id": 4,
             "title": "Menpora ajak masyarakat turut serta dalam Festival Yoga di Jakarta",
             "image_url": "/static/image/article4.jpg",
             "short_description": "Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam...",
+            "short_description": "Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam Festival Yoga yang digelar di Jakarta oleh Isha Foundation dan bertepatan dengan...",
         },
 
         5: {
@@ -536,6 +576,7 @@ def get_article_details(request, article_id):
             "title": "Cerita Royke Lumowa Bersepeda Setahun dari Jakarta ke Paris Demi Dukung Indonesia di Olimpiade 2024",
             "image_url": "/static/image/article5.jpg",
             "short_description": "Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada...",
+            "short_description": "Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada kontingen Indonesia di Olimpiade 2024 dengan cara unik dan spesial. Royke bersepeda dari Jakarta ke Paris sekitar setahun...",
         },
 
         6: {
@@ -543,6 +584,7 @@ def get_article_details(request, article_id):
             "title": "Indonesia Vs Bahrain di GBK Masih Tanda Tanya",
             "image_url": "/static/image/article5.jpg",
             "short_description": "Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs...",
+            "short_description": "Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs Bahrain akan tetap..",
         },
     }
     

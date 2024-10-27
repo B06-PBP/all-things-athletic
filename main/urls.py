@@ -11,6 +11,10 @@ from main.views import (
     rate_product, review_product, user_reviews_and_ratings, rating_list, rating_create,
     rating_list, rating_create, rating_edit, review_list, review_create, review_edit, rating_delete, review_delete
 )
+from main.views import register, login_user, logout_user
+from main.views import show_main, show_articles, get_article_details
+from main.views import show_article1, show_article2, show_article3, show_article4, show_article5, show_article6
+from main.views import show_product, show_yoga, show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, show_running, show_football, show_swimming, show_golf
 
 app_name = 'main'
 
@@ -59,4 +63,5 @@ urlpatterns = [
     path('review/<int:alat_id>/', review_product, name='review_product'),
     path('my-reviews-and-ratings/', user_reviews_and_ratings, name='user_reviews_and_ratings'),
     path('admin/', admin.site.urls),
+    path('articles/<int:article_id>/', get_article_details, name='get_article_details'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -83,3 +83,4 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.user} for {self.alat_olahraga}"
+        return self.alat_olahraga
