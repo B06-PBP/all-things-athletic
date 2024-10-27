@@ -45,47 +45,11 @@
             <li>
               <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_articles' %}" style="color: #344f1f;">Articles</a>
             </li>
-
-            <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75 font-bold" href="{% url 'main:show_articles' %}" style="color: #344f1f;"> Articles </a>
-            </li>
-
           </ul>
         </nav>
 
         {% if user.is_authenticated %}
         <!-- Category Dropdown -->
-        <div class="hidden md:relative md:block">
-          <button
-            type="button"
-            id="categoryButton"
-            class="text-gray-500 transition hover:text-gray-500/75 font-bold cursor-pointer"
-            style="color: #344f1f;"
-            onclick="toggleCategoryDropdown()"
-          >
-            Category
-          </button>
-          
-          <div
-            id="categoryDropdown"
-            class="hidden absolute right-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
-            role="menu"
-          >
-            <ul class="p-2">
-              <li><a href="{% url 'main:show_yoga' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Yoga</a></li>
-              <li><a href="{% url 'main:show_cycling' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cycling</a></li>
-              <li><a href="{% url 'main:show_football' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Football</a></li>
-              <li><a href="{% url 'main:show_swimming' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Swimming</a></li>
-              <li><a href="{% url 'main:show_basketball' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Basket</a></li>
-              <li><a href="{% url 'main:show_tennis' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tennis</a></li>
-              <li><a href="{% url 'main:show_boxing' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Boxing</a></li>
-              <li><a href="{% url 'main:show_badminton' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Badminton</a></li>
-              <li><a href="{% url 'main:show_running' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Running</a></li>
-              <li><a href="{% url 'main:show_golf' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Golf</a></li>
-            </ul>
-          </div>
-        </div>
-
         <div class="hidden md:relative md:block">
           <button
             type="button"
@@ -143,10 +107,6 @@
 
         <!-- Profile Dropdown -->
         <div class="hidden md:relative md:block">
-            <span class="sr-only">Toggle dashboard menu</span>
-            <img src="{% static 'image/user.jpg' %}" alt="" class="size-10 object-cover" />
-          </button>
-
           <div
             id="profileDropdown"
             class="hidden absolute right-0 z-10 mt-0.5 w-56 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
@@ -160,33 +120,6 @@
               >
                 My profile
               </a>
-            </div>
-
-            <div class="p-2">
-              <form method="POST" action="{% url 'main:logout' %}">
-                {% csrf_token %}
-                <button
-                  type="submit"
-                  class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                  role="menuitem"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="size-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                    />
-                  </svg>
-                  Logout
-                </button>
-              </form>
             </div>
           </div>
         </div>
@@ -219,7 +152,6 @@
 
 <script>
  document.addEventListener('DOMContentLoaded', () => {
-  // JavaScript untuk toggle dropdown
   const categoryButton = document.getElementById('categoryButton');
   const categoryDropdown = document.getElementById('categoryDropdown');
   const profileButton = document.getElementById('profileButton');
@@ -249,22 +181,4 @@
     }
   });
 });
-</script>
-  categoryButton.addEventListener('click', () => {
-    categoryDropdown.classList.toggle('hidden');
-  });
-
-  profileButton.addEventListener('click', () => {
-    profileDropdown.classList.toggle('hidden');
-  });
-
-  // Menutup dropdown saat klik di luar elemen dropdown
-  window.addEventListener('click', function(e) {
-    if (!categoryButton.contains(e.target) && !categoryDropdown.contains(e.target)) {
-      categoryDropdown.classList.add('hidden');
-    }
-    if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
-      profileDropdown.classList.add('hidden');
-    }
-  });
 </script>

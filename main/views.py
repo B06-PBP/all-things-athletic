@@ -2,9 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 from .models import AlatOlahraga, Rating, Review
-from django.shortcuts import redirect, render
-from django.http import JsonResponse
-from .models import AlatOlahraga
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
@@ -18,27 +15,18 @@ from .forms import CustomUserCreationForm, CustomUserLoginForm, AlatOlahragaForm
 import datetime
 from django.http import HttpResponseRedirect
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib import messages
-from .forms import CustomUserCreationForm
-import datetime
-
 def register(request):
     form = CustomUserCreationForm()
+
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.role = form.cleaned_data.get('role', 'user')
+            user.role = form.cleaned_data.get('role', 'user')  # Set role to 'user' by default
             user.save()
             messages.success(request, 'Your account has been successfully created!')
-            login(request, user)  # Loginkan user setelah registrasi
-            
-            # Redirect ke halaman utama
-            response = redirect('main:show_main')  # pastikan ini sesuai dengan nama di urls.py
-            response.set_cookie('last_login', datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-            return response
+            login(request, user)  # Automatically log in the user after registration
+            return redirect('main:show_main')  # Adjust to redirect after registration
 
     context = {'form': form}
     return render(request, 'register.html', context)
@@ -55,38 +43,6 @@ def login_user(request):
     else:
         form = CustomUserLoginForm()
     return render(request, 'login.html', {'form': form})
-import datetime
-from django.http import HttpResponseRedirect
-
-def register(request):
-    form = UserCreationForm()
-
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been successfully created!')
-            return redirect('main:login')
-    context = {'form':form}
-    return render(request, 'register.html', context)
-
-def login_user(request):
-   if request.method == 'POST':
-      form = AuthenticationForm(data=request.POST)
-
-      if form.is_valid():
-        user = form.get_user()
-        login(request, user)
-        response = HttpResponseRedirect(reverse("main:show_main"))
-        response.set_cookie('last_login', str(datetime.datetime.now()))
-        return response
-      else:
-        messages.error(request, "Invalid username or password. Please try again.")
-
-   else:
-      form = AuthenticationForm(request)
-   context = {'form': form}
-   return render(request, 'login.html', context)
 
 def logout_user(request):
     logout(request)
@@ -95,16 +51,13 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return redirect('main:login')
 
-@login_required(login_url="/login/")
 @login_required(login_url="/login")
 def show_main(request):
-    print("Accessing show_main view")  # Ini akan muncul di konsol jika view ini terakses
     context = {
         'username': request.user.username,
         'last_login': request.COOKIES.get('last_login'),
     }
     return render(request, 'main.html', context)
-
 
 def rate_product(request, alat_id):
     alat = get_object_or_404(AlatOlahraga, id=alat_id)
@@ -130,98 +83,71 @@ def review_product(request, alat_id):
         form = ReviewForm(instance=review)
     return render(request, 'review_product.html', {'form': form, 'alat': alat})
 
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import AlatOlahraga, Rating, Review
-from .forms import RatingForm, ReviewForm
-from django.contrib.auth.decorators import login_required
-
-@login_required
 def user_reviews_and_ratings(request):
     user_ratings = Rating.objects.filter(user=request.user)
     user_reviews = Review.objects.filter(user=request.user)
     rating_form = RatingForm()
     review_form = ReviewForm()
 
-    # Cek jika request method adalah POST untuk menambah rating atau review
-    if request.method == "POST":
-        if 'submit_rating' in request.POST:
-            rating_form = RatingForm(request.POST)
-            if rating_form.is_valid():
-                rating = rating_form.save(commit=False)
-                rating.user = request.user
-                rating.alat_olahraga = get_object_or_404(AlatOlahraga, id=request.POST.get('alat_olahraga'))
-                rating.save()
-                return redirect('main:user_reviews_and_ratings')
-        
-        elif 'submit_review' in request.POST:
-            review_form = ReviewForm(request.POST)
-            if review_form.is_valid():
-                review = review_form.save(commit=False)
-                review.user = request.user
-                review.alat_olahraga = get_object_or_404(AlatOlahraga, id=request.POST.get('alat_olahraga'))
-                review.save()
-                return redirect('main:user_reviews_and_ratings')
-
     context = {
         'user_ratings': user_ratings,
         'user_reviews': user_reviews,
         'rating_form': rating_form,
         'review_form': review_form,
-        'alat_olahraga_list': AlatOlahraga.objects.all(),
+        'alat_olahraga_list': AlatOlahraga.objects.all(),  # Include the list here
     }
     return render(request, 'user_reviews_and_ratings.html', context)
-
   
-def create_rating(request, alat_id):
-    alat = get_object_or_404(AlatOlahraga, pk=alat_id)
-    if request.method == 'POST':
-        rating_value = request.POST.get('rating')
-        comment = request.POST.get('comment')
-        rating, created = Rating.objects.update_or_create(
-            alat_olahraga=alat, user=request.user,
-            defaults={'rating': rating_value, 'comment': comment}
-        )
-        alat.update_rating()  # Update the average rating
-        return redirect('alat_detail', alat_id=alat.id)
-    return render(request, 'ratings/create_rating.html', {'alat': alat})
+# def create_rating(request, alat_id):
+#     alat = get_object_or_404(AlatOlahraga, pk=alat_id)
+#     if request.method == 'POST':
+#         rating_value = request.POST.get('rating')
+#         comment = request.POST.get('comment')
+#         rating, created = Rating.objects.update_or_create(
+#             alat_olahraga=alat, user=request.user,
+#             defaults={'rating': rating_value, 'comment': comment}
+#         )
+#         alat.update_rating()  # Update the average rating
+#         return redirect('alat_detail', alat_id=alat.id)
+#     return render(request, 'ratings/create_rating.html', {'alat': alat})
 
-def delete_rating(request, rating_id):
-    rating = get_object_or_404(Rating, pk=rating_id, user=request.user)
-    alat = rating.alat_olahraga
-    rating.delete()
-    alat.update_rating()  # Update the average rating after deletion
-    return redirect('alat_detail', alat_id=alat.id)
+# def delete_rating(request, rating_id):
+#     rating = get_object_or_404(Rating, pk=rating_id, user=request.user)
+#     alat = rating.alat_olahraga
+#     rating.delete()
+#     alat.update_rating()  # Update the average rating after deletion
+#     return redirect('alat_detail', alat_id=alat.id)
 
-def create_review(request, alat_id):
-    alat = get_object_or_404(AlatOlahraga, pk=alat_id)
-    if request.method == 'POST':
-        review_text = request.POST.get('review_text')
-        rating_value = request.POST.get('rating')
-        review, created = Review.objects.update_or_create(
-            alat_olahraga=alat, user=request.user,
-            defaults={'review_text': review_text, 'rating': rating_value}
-        )
-        alat.update_rating()  # Update the average rating based on new review
-        return redirect('alat_detail', alat_id=alat.id)
-    return render(request, 'reviews/create_review.html', {'alat': alat})
+# def create_review(request, alat_id):
+#     alat = get_object_or_404(AlatOlahraga, pk=alat_id)
+#     if request.method == 'POST':
+#         review_text = request.POST.get('review_text')
+#         rating_value = request.POST.get('rating')
+#         review, created = Review.objects.update_or_create(
+#             alat_olahraga=alat, user=request.user,
+#             defaults={'review_text': review_text, 'rating': rating_value}
+#         )
+#         alat.update_rating()  # Update the average rating based on new review
+#         return redirect('alat_detail', alat_id=alat.id)
+#     return render(request, 'reviews/create_review.html', {'alat': alat})
 
-def delete_review(request, review_id):
-    review = get_object_or_404(Review, pk=review_id, user=request.user)
-    alat = review.alat_olahraga
-    review.delete()
-    alat.update_rating()  # Update the average rating after deletion
-    return redirect('alat_detail', alat_id=alat.id)
+# def delete_review(request, review_id):
+#     review = get_object_or_404(Review, pk=review_id, user=request.user)
+#     alat = review.alat_olahraga
+#     review.delete()
+#     alat.update_rating()  # Update the average rating after deletion
+#     return redirect('alat_detail', alat_id=alat.id)
 
-def get_rating(request, product_id):
-    product = get_object_or_404(AlatOlahraga, id=product_id)
-    ratings = product.ratings.all()
-    average_rating = ratings.aggregate(models.Avg('rating'))['rating__avg'] or 0
-    return JsonResponse({'average_rating': average_rating})
+# def get_rating(request, product_id):
+#     product = get_object_or_404(AlatOlahraga, id=product_id)
+#     ratings = product.ratings.all()
+#     average_rating = ratings.aggregate(models.Avg('rating'))['rating__avg'] or 0
+#     return JsonResponse({'average_rating': average_rating})
 
-def get_reviews(request, product_id):
-    product = get_object_or_404(AlatOlahraga, id=product_id)
-    reviews = list(product.reviews.values('user__username', 'review'))
-    return JsonResponse({'reviews': reviews})
+# def get_reviews(request, product_id):
+#     product = get_object_or_404(AlatOlahraga, id=product_id)
+#     reviews = list(product.reviews.values('user__username', 'review'))
+#     return JsonResponse({'reviews': reviews})
 
 def show_articles(request):
     return render(request, "articles.html")
@@ -436,8 +362,8 @@ def rating_list(request):
     context = {'page_obj': page_obj}
     return render(request, 'rating_list.html', context)
 
-def rating_delete(request, id):
-    rating = get_object_or_404(Rating, id=id) 
+def rating_delete(request, pk):
+    rating = get_object_or_404(Rating, id=pk) 
     if request.method == 'POST': 
         rating.delete()  # Delete the rating
         return redirect('main:rating_list')
@@ -458,14 +384,23 @@ def rating_create(request):
         if form.is_valid():
             rating = form.save(commit=False)
             rating.user = request.user  # Set to the logged-in CustomUser instance
-            rating.save()
-            return redirect('main:rating_list')
+
+            alat_olahraga_id = request.POST.get('alat_olahraga')
+            if AlatOlahraga.objects.filter(id=alat_olahraga_id).exists():
+                rating.alat_olahraga = AlatOlahraga.objects.get(id=alat_olahraga_id)
+                rating.save()
+                return redirect('main:rating_list')
+            else:
+                form.add_error('alat_olahraga', 'Alat Olahraga yang dipilih tidak valid.')
+        else:
+            # Jika form tidak valid, dapat memunculkan error di sini
+            print(form.errors)
     else:
         form = RatingForm()
-        
+
     context = {
         'form': form,
-        'alat_olahraga_list': AlatOlahraga.objects.all()  # Pass the list of Alat Olahraga items to the template
+        'alat_olahraga_list': AlatOlahraga.objects.all()
     }
     return render(request, 'rating_create.html', context)
 
@@ -490,11 +425,22 @@ def review_create(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
-            review.user = request.user
-            review.save()
-            return redirect('main:review_list')
+            review.user = request.user  # Assign current user to review
+
+            # Cek apakah alat olahraga yang dipilih ada di database
+            alat_olahraga_id = request.POST.get('alat_olahraga')
+            if AlatOlahraga.objects.filter(id=alat_olahraga_id).exists():
+                review.alat_olahraga = AlatOlahraga.objects.get(id=alat_olahraga_id)
+                review.save()
+                return redirect('main:review_list')
+            else:
+                form.add_error('alat_olahraga', 'Alat Olahraga yang dipilih tidak valid.')
+        else:
+            # Jika form tidak valid, bisa memunculkan error di sini
+            print(form.errors)
     else:
         form = ReviewForm()
+
     context = {
         'form': form,
         'alat_olahraga_list': AlatOlahraga.objects.all() 
@@ -547,28 +493,24 @@ def get_article_details(request, article_id):
             "title": "Berstandar Internasional, Jakarta Running Festival 2024 Manjakan Para Peserta",
             "image_url": "/static/image/article1.jpg",
             "short_description": "Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024...",
-            "short_description": "Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024 resmi dibuka pada Kamis (10/10/2024) di Istora Senayan, Jakarta. Pada gelaran tahun ini, para peserta dimanjakan dengan sejumlah...",
         },
         2: {
             "id": 2,
             "title": "Soft tennis - Permainan solid bawa beregu putri Jakarta dulang emas",
             "image_url": "/static/image/article2.jpg",
             "short_description": "DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri...",
-            "short_description": "DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri Pekan Olahraga Nasional (PON) XXI Aceh-Sumatera Utara 2024 berkat permainan yang solid saat...",
         },
         3: {
             "id": 3,
             "title": "7 Lapangan Golf Terbaik di Jakarta, Fasilitas dan Biayanya",
             "image_url": "/static/image/article3.jpg",
             "short_description": "Salah satu lapangan golf di Jakarta dalam daftar ini dianggap sebagai lapangan kelas...",
-            "short_description": "Golf sudah hadir sejak lama di Indonesia, yaitu dari tahun 1872. Namun, olahraga ini tidak sepopuler sepak bola atau bulu tangkis. Salah satu alasan utamanya adalah anggapan bahwa golf...",
         },
         4: {
             "id": 4,
             "title": "Menpora ajak masyarakat turut serta dalam Festival Yoga di Jakarta",
             "image_url": "/static/image/article4.jpg",
             "short_description": "Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam...",
-            "short_description": "Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam Festival Yoga yang digelar di Jakarta oleh Isha Foundation dan bertepatan dengan...",
         },
 
         5: {
@@ -576,7 +518,6 @@ def get_article_details(request, article_id):
             "title": "Cerita Royke Lumowa Bersepeda Setahun dari Jakarta ke Paris Demi Dukung Indonesia di Olimpiade 2024",
             "image_url": "/static/image/article5.jpg",
             "short_description": "Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada...",
-            "short_description": "Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada kontingen Indonesia di Olimpiade 2024 dengan cara unik dan spesial. Royke bersepeda dari Jakarta ke Paris sekitar setahun...",
         },
 
         6: {
@@ -584,7 +525,6 @@ def get_article_details(request, article_id):
             "title": "Indonesia Vs Bahrain di GBK Masih Tanda Tanya",
             "image_url": "/static/image/article5.jpg",
             "short_description": "Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs...",
-            "short_description": "Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs Bahrain akan tetap..",
         },
     }
     

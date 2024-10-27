@@ -27,14 +27,14 @@
 
             <!-- Bagian deskripsi produk dengan min-height dan flex-grow -->
             <div class="flex-grow mb-4">
-                <h4 class="text-white font-semibold mb-2">Deskripsi:</h4>
-                <p class="text-white font-medium" style="min-height: 60px;">{{ product.deskripsi }}</p>
+                <h4 class="text-black font-semibold mb-2">Deskripsi:</h4>
+                <p class="text-black font-medium" style="min-height: 60px;">{{ product.deskripsi }}</p>
             </div>
 
             <!-- Bagian toko (Store) dengan flex-grow -->
             <div class="flex-grow">
-                <h4 class="text-white font-semibold mb-2">Store:</h4>
-                <ul class="text-white list-disc pl-5">
+                <h4 class="text-black font-semibold mb-2">Store:</h4>
+                <ul class="text-black list-disc pl-5">
                     {% for store in product.toko_list %}
                     <li>{{ store }}</li>
                     {% endfor %}
