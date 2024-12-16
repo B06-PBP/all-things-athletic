@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-6">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">My Profile</h2>
+
+        {% if user.profile_picture and user.profile_picture.url %}
+        <div class="flex justify-center mb-4">
+            <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="rounded-full w-32 h-32 object-cover border border-gray-300">
+        </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            <div class="space-y-2">
+                <label for="id_first_name" class="block text-gray-600 font-medium">First Name</label>
+                <input type="text" name="first_name" id="id_first_name" value="{{ form.first_name.value }}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="space-y-2">
+                <label for="id_last_name" class="block text-gray-600 font-medium">Last Name</label>
+                <input type="text" name="last_name" id="id_last_name" value="{{ form.last_name.value }}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="space-y-2">
+                <label for="id_email" class="block text-gray-600 font-medium">Email</label>
+                <input type="email" name="email" id="id_email" value="{{ form.email.value }}" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div class="space-y-2">
+                <label for="id_profile_picture" class="block text-gray-600 font-medium">Profile Picture</label>
+                <input type="file" name="profile_picture" id="id_profile_picture" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 focus:ring-2 focus:ring-blue-300 focus:outline-none">
+                Update Profile
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
