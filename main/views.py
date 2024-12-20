@@ -530,6 +530,40 @@ def show_review_list_json(request):
 
 
 @csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        try:
+            # Parsing data dari body request
+            data = json.loads(request.body)
+
+            # Membuat objek baru berdasarkan data yang diterima
+            new_alat_olahraga = AlatOlahraga.objects.create(
+                user=request.user,  # Mengaitkan produk dengan pengguna saat 
+                cabang_olahraga=data["cabang_olahraga"],  # Cabang olahraga
+                alat_olahraga=data["alat_olahraga"],  # Nama alat olahraga
+                deskripsi=data["deskripsi"],  # Deskripsi alat olahraga
+                harga=int(data["harga"]),  # Harga
+                toko=data["toko"],  # Nama toko
+                rating=float(data["rating"]),  # Rating produk
+                gambar=data["gambar"]  # URL atau path gambar
+            )
+
+            # Menyimpan objek ke database
+            new_alat_olahraga.save()
+
+            # Mengembalikan respons sukses
+            return JsonResponse({"status": "success"}, status=200)
+        except KeyError as e:
+            # Jika ada data yang hilang
+            return JsonResponse({"status": "error", "message": f"Missing key: {str(e)}"}, status=400)
+        except ValueError as e:
+            # Jika data tidak valid
+            return JsonResponse({"status": "error", "message": str(e)}, status=400)
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+
+@csrf_exempt
 @login_required
 def create_rating_flutter(request):
     if request.method == 'POST':
