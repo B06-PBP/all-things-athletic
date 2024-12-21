@@ -11,7 +11,9 @@ from main.views import (
     rate_product, review_product, user_reviews_and_ratings, rating_list, rating_create,
     rating_list, rating_create, rating_edit, review_list, review_create, review_edit, rating_delete, review_delete, 
     show_alat_olahraga_json, show_rating_list_json, show_review_list_json, create_review_flutter, edit_review_flutter,
-    delete_review_flutter, create_rating_flutter, edit_rating_flutter, delete_rating_flutter
+    delete_review_flutter, create_rating_flutter, edit_rating_flutter, delete_rating_flutter, get_username, get_alat,
+    show_article_json, create_commentrating_flutter, edit_commentrating_flutter, delete_commentrating_flutter,
+    show_article_commrat
 )
 from main.views import register, login_user, logout_user
 from main.views import show_main, show_articles, get_article_details
@@ -48,6 +50,9 @@ urlpatterns = [
     path('alat_list/', alat_list, name='alat_list'),
     path('alat/<int:id>/delete/', delete_alat, name='delete_alat'),
     path('articles/<int:article_id>/', get_article_details, name='get_article_details'),
+    path('articles/create-flutter/', create_commentrating_flutter, name='comrat_create'),
+    path('articles/<int:pk>/edit-flutter/', edit_commentrating_flutter, name='comrat_edit'),
+    path('articles/<int:pk>/delete/', delete_commentrating_flutter, name='comrat_delete'),
     path('ratings/', rating_list, name='rating_list'),
     path('ratings/create/', rating_create, name='rating_create'),
     path('ratings/create-flutter/', create_rating_flutter, name='rating_create'),
@@ -56,8 +61,12 @@ urlpatterns = [
     path('ratings/<int:pk>/delete/', rating_delete, name='rating_delete'),
     path('ratings/delete-flutter/', delete_rating_flutter, name='rating_delete'),
     path('show_alat_olahraga_json/', show_alat_olahraga_json, name='show_alat_olahraga_json'),
+    path('show_article_json/', show_article_json, name='show_article_json'),
     path('show_rating_list_json/', show_rating_list_json, name='show_rating_list_json'),
     path('show_review_list_json/', show_review_list_json, name='show_review_list_json'),
+    path('show_article_comrat_json/<int:pk>/', show_article_commrat, name='show_review_list_json'),
+    path('username/<int:id>/', get_username, name='get_username'),
+    path('alat/<int:id>/', get_alat, name='get_alat'),
     # Review URLs
     path('reviews/', review_list, name='review_list'),
     path('reviews/create/', review_create, name='review_create'),
