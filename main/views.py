@@ -102,6 +102,11 @@ def user_reviews_and_ratings(request):
         'alat_olahraga_list': AlatOlahraga.objects.all(),  # Include the list here
     }
     return render(request, 'user_reviews_and_ratings.html', context)
+
+def user_ratings_flutter(request, id):
+    user_ratings = Rating.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_ratings), content_type="application/json")
   
 def show_articles(request):
     return render(request, "articles.html")

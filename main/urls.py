@@ -13,7 +13,7 @@ from main.views import (
     show_alat_olahraga_json, show_rating_list_json, show_review_list_json, create_review_flutter, edit_review_flutter,
     delete_review_flutter, create_rating_flutter, edit_rating_flutter, delete_rating_flutter, get_username, get_alat,
     show_article_json, create_commentrating_flutter, edit_commentrating_flutter, delete_commentrating_flutter,
-    show_article_commrat
+    show_article_commrat, user_reviews_flutter, user_ratings_flutter
 )
 from main.views import register, login_user, logout_user
 from main.views import show_main, show_articles, get_article_details
@@ -78,6 +78,7 @@ urlpatterns = [
     path('rate/<int:alat_id>/', rate_product, name='rate_product'),
     path('review/<int:alat_id>/', review_product, name='review_product'),
     path('my-reviews-and-ratings/', user_reviews_and_ratings, name='user_reviews_and_ratings'),
+    path('my-ratings/<int:id>/', user_ratings_flutter, name='user_ratings'),
     path('admin/', admin.site.urls),
     path('articles/<int:article_id>/', get_article_details, name='get_article_details'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
