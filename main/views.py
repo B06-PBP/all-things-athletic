@@ -628,6 +628,104 @@ def delete_rating_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        
+        alat_olahraga_id = data['alat_olahraga']
+        rating = data['rating']
+        review = data['review']
+
+        if not all([alat_olahraga_id, rating, review]):
+            return JsonResponse({"status": "error", "message": "Missing required fields"}, status=400)
+        
+        try:
+            alat = AlatOlahraga.objects.get(id=alat_olahraga_id)
+        except AlatOlahraga.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Alat Olahraga does not exist"}, status=400)
+        
+        # Buat objek Review
+
+        review = Review.objects.create(
+            user=request.user,
+            alat_olahraga=alat,
+            rating=float(rating),
+            review_text=review
+        )
+        
+        review.save()
+        
+        return JsonResponse({"status": "success", "review_id": str(review.id)}, status=201)
+       
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def edit_review_flutter(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    if not request.user.is_authenticated:
+        return JsonResponse({"status": "error", "message": "Authentication required"}, status=401)
+
+    if request.method == 'GET':
+        alat_list = AlatOlahraga.objects.all()
+        data = {
+            "status": "success",
+            "review": {
+                "id": review.pk,
+                "alat_olahraga_pk": review.alat_olahraga.pk,
+                "review_text": review.review_text,
+                "rating": review.rating,
+            },
+            "alat_olahraga_list": [
+                {
+                    "pk": alat.pk,
+                    "alat_olahraga": alat.alat_olahraga,
+                }
+                for alat in alat_list
+            ]
+        }
+        return JsonResponse(data, safe=False)
+
+    elif request.method == 'POST':
+        
+        data = json.loads(request.body)
+        alat_olahraga_pk = data['alat_olahraga']
+        review_text = data['review_text']
+        rating = data['rating']
+
+        if not all([alat_olahraga_pk, review_text, rating is not None]):
+            return JsonResponse({"status": "error", "message": "Missing required fields"}, status=400)
+
+        try:
+            alat = AlatOlahraga.objects.get(pk=alat_olahraga_pk)
+        except AlatOlahraga.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Alat Olahraga does not exist"}, status=400)
+
+        try:
+            rating = float(rating)
+            if rating < 0 or rating > 5:
+                return JsonResponse({"status": "error", "message": "Rating must be between 0 and 5"}, status=400)
+        except ValueError:
+            return JsonResponse({"status": "error", "message": "Invalid rating value"}, status=400)
+
+        review.alat_olahraga = alat
+        review.review_text = review_text
+        review.rating = rating
+        review.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    
+@csrf_exempt
+def delete_review_flutter(request):
+    data = json.loads(request.body)
+    review = get_object_or_404(Review, pk=data["review_id"])
+    if request.method == 'POST':
+        review.delete()
+
+    return JsonResponse({"status": "success"}, status=200)
 # from django.contrib.auth.decorators import login_required
 # from django.shortcuts import render
 # from .models import Review, Rating
