@@ -726,6 +726,11 @@ def delete_review_flutter(request):
         review.delete()
 
     return JsonResponse({"status": "success"}, status=200)
+
+def user_reviews_flutter(request, id):
+    user_reviews = Review.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_reviews), content_type="application/json")
 # from django.contrib.auth.decorators import login_required
 # from django.shortcuts import render
 # from .models import Review, Rating
