@@ -627,6 +627,105 @@ def delete_rating_flutter(request):
             return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+    
+@csrf_exempt
+@login_required
+def create_commentrating_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        article_id = data['article_id']
+        name = data['name']
+        rating = data['rating']
+        comment = data['comment']
+
+        try:
+            article = Article.objects.get(pk=article_id)
+        except Article.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Article does not exist"}, status=400)
+
+        comrat = CommentRatingArticle.objects.create(
+            article=article,
+            user=request.user,
+            name=name,
+            rating=rating,
+            comment=comment
+        )
+        comrat.save()
+
+        return JsonResponse({"status": "success", "id": comrat.pk}, status=201)
+
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+    
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def edit_commentrating_flutter(request, pk):
+
+    comrat = get_object_or_404(CommentRatingArticle, pk=pk)
+
+    if request.method == 'GET':
+        article_list = Article.objects.all()
+        data = {
+            "status": "success",
+            "commentrating": {
+                "id": comrat.pk,
+                "article_id": comrat.article.pk,
+                "name": comrat.name,
+                "rating": comrat.rating,
+                "comment": comrat.comment or "",
+            },
+            "article_list": [
+                {
+                    "pk": article.pk,
+                    "title": article.title,
+                }
+                for article in article_list
+            ]
+        }
+        return JsonResponse(data, safe=False)
+
+    elif request.method == 'POST':
+        
+        data = json.loads(request.body)
+        article_id = data['article_id']
+        name = data['name']
+        rating = data['rating']
+        comment = data['comment']
+
+        try:
+            rating = float(rating)
+            if rating < 0 or rating > 5:
+                return JsonResponse({"status": "error", "message": "Rating must be between 0 and 5"}, status=400)
+        except ValueError:
+            return JsonResponse({"status": "error", "message": "Invalid rating value"}, status=400)
+
+        try:
+            article = Article.objects.get(pk=article_id)
+        except Article.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Article does not exist"}, status=400)
+
+        comrat.article = article
+        comrat.name = name
+        comrat.rating = rating
+        comrat.comment = comment
+        comrat.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+
+@csrf_exempt
+def delete_commentrating_flutter(request):
+    if request.method == 'POST':
+    
+        data = json.loads(request.body)
+        comrat_id = data["id"]
+
+        comrat = get_object_or_404(CommentRatingArticle, pk=comrat_id)
+        comrat.delete()
+        return JsonResponse({"status": "success"}, status=200)
+
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
 # from django.contrib.auth.decorators import login_required
 # from django.shortcuts import render
