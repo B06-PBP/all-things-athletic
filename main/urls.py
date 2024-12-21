@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from main.views import (
-    register, login_user, logout_user, show_main, show_articles, 
+    create_product_flutter, register, login_user, logout_user, show_main, show_articles, 
     get_article_details, show_article1, show_article2, show_article3, 
     show_article4, show_article5, show_article6, show_product, show_yoga, 
     show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, 
@@ -53,6 +53,7 @@ urlpatterns = [
     path('articles/create-flutter/', create_commentrating_flutter, name='comrat_create'),
     path('articles/<int:pk>/edit-flutter/', edit_commentrating_flutter, name='comrat_edit'),
     path('articles/<int:pk>/delete/', delete_commentrating_flutter, name='comrat_delete'),
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
     path('ratings/', rating_list, name='rating_list'),
     path('ratings/create/', rating_create, name='rating_create'),
     path('ratings/create-flutter/', create_rating_flutter, name='rating_create'),
