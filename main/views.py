@@ -109,7 +109,6 @@ def user_reviews_flutter(request, id):
     user_reviews = Review.objects.filter(user_id=id)
 
     return HttpResponse(serializers.serialize("json", user_reviews), content_type="application/json")
-
 def user_ratings_flutter(request, id):
     user_ratings = Rating.objects.filter(user_id=id)
 
@@ -859,7 +858,6 @@ def delete_commentrating_flutter(request):
 
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
-
 
 @csrf_exempt
 def seed_dataset(request):
