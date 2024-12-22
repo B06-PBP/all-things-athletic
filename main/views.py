@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.core.paginator import Paginator
@@ -102,6 +104,16 @@ def user_reviews_and_ratings(request):
         'alat_olahraga_list': AlatOlahraga.objects.all(),  # Include the list here
     }
     return render(request, 'user_reviews_and_ratings.html', context)
+
+def user_reviews_flutter(request, id):
+    user_reviews = Review.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_reviews), content_type="application/json")
+
+def user_ratings_flutter(request, id):
+    user_ratings = Rating.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_ratings), content_type="application/json")
   
 def show_articles(request):
     return render(request, "articles.html")
@@ -847,9 +859,58 @@ def delete_commentrating_flutter(request):
 
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
-        
 
 
+@csrf_exempt
+def seed_dataset(request):
+    if request.method == "POST":
+        try:
+            file_path = os.path.join(settings.BASE_DIR, 'main/fixtures/Daftar_100_Alat_Olahraga_di_Jak.json')
+
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+
+            for item in data:
+                fields = item.get('fields', {})
+                AlatOlahraga.objects.create(
+                    cabang_olahraga=fields.get('cabang_olahraga'),
+                    alat_olahraga=fields.get('alat_olahraga'),
+                    deskripsi=fields.get('deskripsi'),
+                    harga=fields.get('harga'),
+                    toko=fields.get('toko'),
+                    rating=fields.get('rating'),
+                    gambar=fields.get('gambar'),
+                )
+
+            return JsonResponse({"message": "Data seeded successfully from file!"}, status=201)
+        except FileNotFoundError:
+            return JsonResponse({"error": "File not found."}, status=404)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Error decoding JSON file."}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Invalid request method."}, status=405)
+
+@csrf_exempt
+def seed_article(request):
+    if request.method == "POST":
+    
+        file_path = os.path.join(settings.BASE_DIR, 'main/fixtures/Daftar_Artikel.json')
+
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        for item in data:
+            fields = item.get('fields', {})
+            Article.objects.create(
+                title=fields.get('title'),
+                image_url=fields.get('image_url'),
+                full_description=fields.get('full_description'),
+            )
+
+        return JsonResponse({"message": "Data seeded successfully from file!"}, status=201)
+
+    return JsonResponse({"error": "Invalid request method."}, status=405)
 
 # from django.contrib.auth.decorators import login_required
 # from django.shortcuts import render

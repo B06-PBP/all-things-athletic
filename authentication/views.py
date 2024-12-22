@@ -59,6 +59,7 @@ def login_api(request):
             auth_login(request, user)
             return JsonResponse({
                 "username": user.username,
+                "userId": user.pk,
                 "role": user.role,
                 "status": True,
                 "message": "Login berhasil!"
