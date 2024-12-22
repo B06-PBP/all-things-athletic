@@ -1,0 +1,56 @@
+[   
+    {
+        "model": "main.article",
+        "pk": 1,
+        "fields": {
+            "title": "Berstandar Internasional, Jakarta Running Festival 2024 Manjakan Para Peserta",
+            "image_url": "https://awsimages.detik.net.id/community/media/visual/2024/05/01/jakarta-running-festival-2024_169.jpeg?w=1200",
+            "full_description": "Ajang marathon berstandar internasional, Jakarta Running Festival (JRF) 2024 resmi dibuka pada Kamis (10/10/2024) di Istora Senayan, Jakarta. Pada gelaran tahun ini, para peserta dimanjakan dengan sejumlah hal yang bahkan melebihi standar internasional. Acara tersebut dimulai sejak Kamis (10/10/2024) dengan race expo di Istora Senayan, Jakarta. Setelah itu, para peserta yang sudah mendaftar akan turut serta dalam sejumlah kategori yang akan dilangsungkan pada 12-13 Oktober 2024. Pada 12 Oktober, kategori 5K dan 10K akan dimulai di pagi hari, sementara kategori anak-anak (Junior Dash) akan diadakan pada sore hari di Stadion Utama GBK. Pada 13 Oktober, kategori half marathon dan full marathon akan digelar. Rute JRF 2024 dirancang untuk menonjolkan keindahan kota Jakarta, menggabungkan pesona modern dan sejarah kota, sehingga para pelari dapat menikmati pemandangan unik ibu kota. Donny Tjahyadikarta selaku Race Director JRF 2024 mengungkapkan bahwa gelaran tahun ini sudah setara dengan event marathon dunia."
+        }
+    },
+    {
+        "model": "main.article",
+        "pk": 2,
+        "fields": {
+            "title": "Soft tenis - Permainan solid bawa beregu putri Jakarta dulang emas",
+            "image_url": "https://img.antarafoto.com/cache/1200x800/2024/09/15/pon-xxi-aceh-sumut-dki-jakarta-raih-emas-soft-tenis-ganda-putri-1dqgv-dom.jpg",
+            "full_description": "DKI Jakarta sukses mendulang medali emas cabang olahraga soft tenis beregu putri Pekan Olahraga Nasional (PON) XXI Aceh-Sumatera Utara 2024 berkat permainan yang solid saat menghadapi Jawa Timur. Pada pertandingan final di Lapangan Soft Tenis Mapolda Aceh, Banda Aceh, Selasa (17/9) malam, Jakarta yang menurunkan Oxi Gravitasi Putri pada partai perorangan Julia Sanger/Ni Putu Armini menang atas Jatim 2-0. Oxi Gravitasi turun pertama pada partai perorangan melawan wakil Jawa Timur, Nofulan Adyani. Oxi memulai pertandingan dengan mulus dan dapat dengan mudah menghalau pukulan-pukulan yang diarahkan kepadanya. Meski Nofulan Adyani berhasil memanfaatkan momentum dan menghasilkan satu skor, namun upaya itu masih belum bisa menandingi skor Oxi yang sudah melesat 3-1. Pada akhirnya, Oxi mampu mencetak satu skor terakhir, sehingga Jakarta unggul atas Jawa Timur dengan skor 4-1 dalam set pertama.  Kemudian, pada partai ganda, Julia/Putu berhadapan dengan wakil Jawa Timur, Heravita Mediana/Shilvia Audy. Pertandingan antara dua pasangan ini berjalan sengit."
+        }
+    },
+    {
+        "model": "main.article",
+        "pk": 3,
+        "fields": {
+            "title": "7 Lapangan Golf Terbaik di Jakarta, Fasilitas dan Biayanya",
+            "image_url": "https://asset.kompas.com/crops/M6ibaqhqSAyfoQ04IommWbmxTJk=/0x0:739x493/1200x800/data/photo/2020/10/03/5f77df956f1e5.jpg",
+            "full_description": "Golf sudah hadir sejak lama di Indonesia, yaitu dari tahun 1872. Namun, olahraga ini tidak sepopuler sepak bola atau bulu tangkis. Salah satu alasan utamanya adalah anggapan bahwa golf adalah olahraga yang mahal. Hal ini tidak sepenuhnya salah, karena golf memerlukan lapangan khusus yang luas dan terawat. Selain itu, peralatan bermain seperti stik golf, bola, serta aksesori lainnya juga tergolong mahal. Namun, harga bermain golf sebenarnya bervariasi di setiap tempat, tergantung pada kualitas dan fasilitas yang ditawarkan. Jika penasaran ingin mencoba, Anda bisa mengecek biaya dan fasilitas dari beberapa lapangan golf di Jakarta di bawah ini sebagai bahan pertimbangan."
+        }
+    },
+    {
+        "model": "main.article",
+        "pk": 4,
+        "fields": {
+            "title": "Menpora ajak masyarakat turut serta dalam Festival Yoga di Jakarta",
+            "image_url": "https://cdn.antaranews.com/cache/1200x800/2024/06/21/perayaan-hari-yoga-internasional-210624-nhw-7.jpg.webp",
+            "full_description": "Menteri Pemuda dan Olahraga Dito Ariotedjo mengajak masyarakat turut serta dalam Festival Yoga yang digelar di Jakarta oleh Isha Foundation dan bertepatan dengan momen Hari Yoga Internasional 2024. Yoga dan meditasi menawarkan solusi yang efektif untuk mengelola stres dan menjaga keseimbangan emosional, kata Dito Ariotedjo dalam keterangan tertulis pihak penyelenggara. Festival ini bertujuan meningkatkan kesadaran kesehatan mental melalui sesi yoga dan meditasi gratis yang diselenggarakan sejak 16 Juni 2024 sampai Minggu 23 Juni, serta kegiatan budaya dan rekreasi untuk semua kalangan secara gratis."
+        }
+    },
+    {
+        "model": "main.article",
+        "pk": 5,
+        "fields": {
+            "title": "Cerita Royke Lumowa Bersepeda Setahun dari Jakarta ke Paris Demi Dukung Indonesia di Olimpiade 2024",
+            "image_url": "https://cdn1-production-images-kly.akamaized.net/BpBXyDQLiM_uB0jjqahiy4WuECg=/800x450/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4904545/original/092560200_1722284302-20240729_-_NOC_-_OP24_-_KOKO_-_Welcoming_Royke_Limowa_di_Club_France_Paris_Prancis-7.jpg",
+            "full_description": "Mantan Dirlantas Polda Metro Jaya Irjen Pol (Purn) Royke Lumowa memberikan dukungan kepada kontingen Indonesia di Olimpiade 2024 dengan cara unik dan spesial. Royke bersepeda dari Jakarta ke Paris sekitar setahun sehingga tiba tepat saat Olimpiade 2024 berlangsung. Perjalanan ini mengusung misi “Cycling Anywhere to Save the Earth” dengan melintasi 44 negara dari dua benua. Royke mengatasi beragam rintangan mulai dari badai gurun di Pakistan, elevasi ekstrem di Tibet, hingga pencurian sepeda di Italia. Aksi bersepedanya sukses mendukung kampanye Olimpiade 2024 dan memperjuangkan Indonesia sebagai tuan rumah Olimpiade 2036."
+        }
+    },
+    {
+        "model": "main.article",
+        "pk": 6,
+        "fields": {
+            "title": "Indonesia Vs Bahrain di GBK Masih Tanda Tanya",
+            "image_url": "https://akcdn.detik.net.id/community/media/visual/2024/10/10/bahrain-vs-indonesia-8_43.jpeg?w=1200",
+            "full_description": "Menpora Dito Ariotedjo menyebut FIFA sudah memutuskan laga Timnas Indonesia vs Bahrain akan tetap digelar di Jakarta. Namun, sumber lain menyebut bahwa PSSI belum mendapat kepastian dari AFC maupun FIFA. Polemik ini muncul dari permintaan Bahrain yang ingin laga digelar di venue netral. AFC menegaskan akan mendiskusikan isu ini untuk memastikan keamanan pemain, ofisial, dan fans. Laga ini dijadwalkan pada 25 Maret 2025 di Stadion Utama Gelora Bung Karno (SUGBK), Jakarta."
+        }
+    }
+]
