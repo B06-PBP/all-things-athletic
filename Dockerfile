@@ -22,4 +22,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Run gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "all_things_athletic.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "all_things_athletic.wsgi:application"]
