@@ -2,23 +2,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from main.views import (
-    register, login_user, logout_user, show_main, show_articles, 
-    get_article_details, show_article1, show_article2, show_article3, 
-    show_article4, show_article5, show_article6, show_product, show_yoga, 
-    show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, 
-    show_running, show_football, show_swimming, show_golf, create_alat, alat_list, delete_alat, edit_alat,
-    rate_product, review_product, user_reviews_and_ratings, rating_list, rating_create,
-    rating_list, rating_create, rating_edit, review_list, review_create, review_edit, rating_delete, review_delete, 
-    show_alat_olahraga_json, show_rating_list_json, show_review_list_json, create_review_flutter, edit_review_flutter,
-    delete_review_flutter, create_rating_flutter, edit_rating_flutter, delete_rating_flutter, get_username, get_alat,
-    show_article_json, create_commentrating_flutter, edit_commentrating_flutter, delete_commentrating_flutter,
-    show_article_commrat, user_reviews_flutter, user_ratings_flutter, seed_dataset
-)
-from main.views import register, login_user, logout_user
-from main.views import show_main, show_articles, get_article_details
-from main.views import show_article1, show_article2, show_article3, show_article4, show_article5, show_article6, seed_article
-from main.views import show_product, show_yoga, show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, show_running, show_football, show_swimming, show_golf
+
+from main.views import alat_list, create_alat, create_commentrating_flutter, create_rating_flutter, create_review_flutter, delete_alat, delete_commentrating_flutter, delete_rating_flutter, delete_review_flutter, edit_alat, edit_commentrating_flutter, edit_rating_flutter, edit_review_flutter, get_alat, get_article_details, get_username, login_user, logout_user, rate_product, rating_create, rating_delete, rating_edit, rating_list, register, review_create, review_delete, review_edit, review_list, review_product, seed_article, seed_dataset, show_alat_olahraga_json, show_article1, show_article2, show_article3, show_article4, show_article5, show_article6, show_article_commrat, show_article_json, show_articles, show_badminton, show_basketball, show_boxing, show_cycling, show_football, show_golf, show_main, show_product, show_rating_list_json, show_review_list_json, show_running, show_swimming, show_tennis, show_yoga, user_ratings_flutter, user_reviews_and_ratings, user_reviews_flutter
 
 app_name = 'main'
 
