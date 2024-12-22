@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from main.views import (
-    register, login_user, logout_user, show_main, show_articles, 
+    create_product_flutter, register, login_user, logout_user, show_main, show_articles, 
     get_article_details, show_article1, show_article2, show_article3, 
     show_article4, show_article5, show_article6, show_product, show_yoga, 
     show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, 
@@ -13,11 +13,11 @@ from main.views import (
     show_alat_olahraga_json, show_rating_list_json, show_review_list_json, create_review_flutter, edit_review_flutter,
     delete_review_flutter, create_rating_flutter, edit_rating_flutter, delete_rating_flutter, get_username, get_alat,
     show_article_json, create_commentrating_flutter, edit_commentrating_flutter, delete_commentrating_flutter,
-    show_article_commrat
+    show_article_commrat, user_reviews_flutter, user_ratings_flutter, seed_dataset
 )
 from main.views import register, login_user, logout_user
 from main.views import show_main, show_articles, get_article_details
-from main.views import show_article1, show_article2, show_article3, show_article4, show_article5, show_article6
+from main.views import show_article1, show_article2, show_article3, show_article4, show_article5, show_article6, seed_article
 from main.views import show_product, show_yoga, show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, show_running, show_football, show_swimming, show_golf
 
 app_name = 'main'
@@ -52,7 +52,7 @@ urlpatterns = [
     path('articles/<int:article_id>/', get_article_details, name='get_article_details'),
     path('articles/create-flutter/', create_commentrating_flutter, name='comrat_create'),
     path('articles/<int:pk>/edit-flutter/', edit_commentrating_flutter, name='comrat_edit'),
-    path('articles/<int:pk>/delete/', delete_commentrating_flutter, name='comrat_delete'),
+    path('articles/delete-flutter/', delete_commentrating_flutter, name='comrat_delete'),
     path('ratings/', rating_list, name='rating_list'),
     path('ratings/create/', rating_create, name='rating_create'),
     path('ratings/create-flutter/', create_rating_flutter, name='rating_create'),
@@ -78,6 +78,10 @@ urlpatterns = [
     path('rate/<int:alat_id>/', rate_product, name='rate_product'),
     path('review/<int:alat_id>/', review_product, name='review_product'),
     path('my-reviews-and-ratings/', user_reviews_and_ratings, name='user_reviews_and_ratings'),
+    path('my-reviews/<int:id>/', user_reviews_flutter, name='user_reviews'),
+    path('my-ratings/<int:id>/', user_ratings_flutter, name='user_ratings'),
     path('admin/', admin.site.urls),
     path('articles/<int:article_id>/', get_article_details, name='get_article_details'),
+    path('seed-article/', seed_article, name='seed_article'),
+    path('seed-dataset/', seed_dataset, name='seed_dataset'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

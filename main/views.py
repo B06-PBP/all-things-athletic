@@ -1,7 +1,9 @@
+import os
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.core.paginator import Paginator
-from .models import AlatOlahraga, Rating, Review
+from .models import AlatOlahraga, Article, CommentRatingArticle, Rating, Review, CustomUser
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
@@ -102,6 +104,15 @@ def user_reviews_and_ratings(request):
         'alat_olahraga_list': AlatOlahraga.objects.all(),  # Include the list here
     }
     return render(request, 'user_reviews_and_ratings.html', context)
+
+def user_reviews_flutter(request, id):
+    user_reviews = Review.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_reviews), content_type="application/json")
+def user_ratings_flutter(request, id):
+    user_ratings = Rating.objects.filter(user_id=id)
+
+    return HttpResponse(serializers.serialize("json", user_ratings), content_type="application/json")
   
 def show_articles(request):
     return render(request, "articles.html")
@@ -520,14 +531,134 @@ def show_alat_olahraga_json(request):
     data = AlatOlahraga.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+def show_article_json(request):
+    data = Article.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_article_commrat(request, pk):
+    data = CommentRatingArticle.objects.filter(article_id = pk)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
 def show_rating_list_json(request):
     data = Rating.objects.all().order_by('-id')
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_review_list_json(request):
-    data = Review.objects.all()  
+    data = Review.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+def get_username(request, id):
+    try:
+        user = CustomUser.objects.get(id=id)
+        return JsonResponse({"username": user.username})
+    except CustomUser.DoesNotExist:
+        return JsonResponse({"error": "User not found"}, status=404)
+    
+def get_alat(request, id):
+    try:
+        alat = AlatOlahraga.objects.get(id=id)
+        return JsonResponse({"nama_alat": alat.alat_olahraga})
+    except CustomUser.DoesNotExist:
+        return JsonResponse({"error": "User not found"}, status=404)
+
+@csrf_exempt
+def create_review_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        
+        alat_olahraga_id = data['alat_olahraga']
+        rating = data['rating']
+        review = data['review']
+
+        if not all([alat_olahraga_id, rating, review]):
+            return JsonResponse({"status": "error", "message": "Missing required fields"}, status=400)
+        
+        try:
+            alat = AlatOlahraga.objects.get(id=alat_olahraga_id)
+        except AlatOlahraga.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Alat Olahraga does not exist"}, status=400)
+        
+        # Buat objek Review
+
+        review = Review.objects.create(
+            user=request.user,
+            alat_olahraga=alat,
+            rating=float(rating),
+            review_text=review
+        )
+        
+        review.save()
+        
+        return JsonResponse({"status": "success", "review_id": str(review.id)}, status=201)
+       
+    else:
+        return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+    
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def edit_review_flutter(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    if not request.user.is_authenticated:
+        return JsonResponse({"status": "error", "message": "Authentication required"}, status=401)
+
+    if request.method == 'GET':
+        alat_list = AlatOlahraga.objects.all()
+        data = {
+            "status": "success",
+            "review": {
+                "id": review.pk,
+                "alat_olahraga_pk": review.alat_olahraga.pk,
+                "review_text": review.review_text,
+                "rating": review.rating,
+            },
+            "alat_olahraga_list": [
+                {
+                    "pk": alat.pk,
+                    "alat_olahraga": alat.alat_olahraga,
+                }
+                for alat in alat_list
+            ]
+        }
+        return JsonResponse(data, safe=False)
+
+    elif request.method == 'POST':
+        
+        data = json.loads(request.body)
+        alat_olahraga_pk = data['alat_olahraga']
+        review_text = data['review_text']
+        rating = data['rating']
+
+        if not all([alat_olahraga_pk, review_text, rating is not None]):
+            return JsonResponse({"status": "error", "message": "Missing required fields"}, status=400)
+
+        try:
+            alat = AlatOlahraga.objects.get(pk=alat_olahraga_pk)
+        except AlatOlahraga.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Alat Olahraga does not exist"}, status=400)
+
+        try:
+            rating = float(rating)
+            if rating < 0 or rating > 5:
+                return JsonResponse({"status": "error", "message": "Rating must be between 0 and 5"}, status=400)
+        except ValueError:
+            return JsonResponse({"status": "error", "message": "Invalid rating value"}, status=400)
+
+        review.alat_olahraga = alat
+        review.review_text = review_text
+        review.rating = rating
+        review.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+
+@csrf_exempt
+def delete_review_flutter(request):
+    data = json.loads(request.body)
+    review = get_object_or_404(Review, pk=data["review_id"])
+    if request.method == 'POST':
+        review.delete()
+
+    return JsonResponse({"status": "success"}, status=200)
 
 @csrf_exempt
 @login_required
@@ -628,6 +759,7 @@ def delete_rating_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
     
+
 @csrf_exempt
 @login_required
 def create_commentrating_flutter(request):
@@ -726,6 +858,57 @@ def delete_commentrating_flutter(request):
 
     else:
         return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+@csrf_exempt
+def seed_dataset(request):
+    if request.method == "POST":
+        try:
+            file_path = os.path.join(settings.BASE_DIR, 'main/fixtures/Daftar_100_Alat_Olahraga_di_Jak.json')
+
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+
+            for item in data:
+                fields = item.get('fields', {})
+                AlatOlahraga.objects.create(
+                    cabang_olahraga=fields.get('cabang_olahraga'),
+                    alat_olahraga=fields.get('alat_olahraga'),
+                    deskripsi=fields.get('deskripsi'),
+                    harga=fields.get('harga'),
+                    toko=fields.get('toko'),
+                    rating=fields.get('rating'),
+                    gambar=fields.get('gambar'),
+                )
+
+            return JsonResponse({"message": "Data seeded successfully from file!"}, status=201)
+        except FileNotFoundError:
+            return JsonResponse({"error": "File not found."}, status=404)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Error decoding JSON file."}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Invalid request method."}, status=405)
+
+@csrf_exempt
+def seed_article(request):
+    if request.method == "POST":
+    
+        file_path = os.path.join(settings.BASE_DIR, 'main/fixtures/Daftar_Artikel.json')
+
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+
+        for item in data:
+            fields = item.get('fields', {})
+            Article.objects.create(
+                title=fields.get('title'),
+                image_url=fields.get('image_url'),
+                full_description=fields.get('full_description'),
+            )
+
+        return JsonResponse({"message": "Data seeded successfully from file!"}, status=201)
+
+    return JsonResponse({"error": "Invalid request method."}, status=405)
 
 # from django.contrib.auth.decorators import login_required
 # from django.shortcuts import render
