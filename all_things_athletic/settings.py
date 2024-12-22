@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f60e9w!#11h-5hguj8&p11zph(z24!5irzbg_(x50osqb%f7_2
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id",  "10.0.2.2"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id",  "10.0.2.2", "all-things-athletic-production.up.railway.app"]
 
 
 # Application definition
@@ -143,4 +143,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 AUTH_USER_MODEL = 'main.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id.", "https://amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id."]
+CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id.", "https://amirah-rizkita-allthingsathletic.pbp.cs.ui.ac.id.", "https://all-things-athletic-production.up.railway.app"]
