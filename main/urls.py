@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from main.views import (
-    create_product_flutter, register, login_user, logout_user, show_main, show_articles, 
+    register, login_user, logout_user, show_main, show_articles, 
     get_article_details, show_article1, show_article2, show_article3, 
     show_article4, show_article5, show_article6, show_product, show_yoga, 
     show_cycling, show_tennis, show_boxing, show_badminton, show_basketball, 
